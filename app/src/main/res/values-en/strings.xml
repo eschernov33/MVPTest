@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">SberCities</string>
+    <string name="list_of_cities">LIST OF CITIES</string>
+    <string name="city_moscow">Moscow</string>
+    <string name="city_amsterdam">Amsterdam</string>
+    <string name="city_bangkok">Bangkok</string>
+    <string name="city_madrid">Madrid</string>
+    <string name="city_new_york">New-york</string>
+    <string name="city_paris">Paris</string>
+    <string name="country_russia">Russia</string>
+    <string name="country_netherlands">Netherlands</string>
+    <string name="country_thailand">Thailand</string>
+    <string name="country_spain">Spain</string>
+    <string name="country_usa">USA</string>
+    <string name="country_france">France</string>
+    <string name="moscow_description">Moscow is the capital of Russia, a multinational city on the Moskva River in the western part of the country. In its historical center is the medieval fortress Kremlin - the residence of the Russian president. On its territory, you can visit the Armory, where precious items that belonged to the royal family are exhibited. Behind the northeastern wall of the Kremlin is Red Square, the symbolic center of Russia. Here you can see the Lenin Mausoleum, the State Historical Museum and St. Basil\'s Cathedral with colorful onion domes.</string>
+    <string name="amsterdam_description">Amsterdam is the capital of the Netherlands, known for its complex network of canals, narrow houses with gabled roofs and a rich artistic heritage, including the 17th century, which became the golden one in the history of this country. The city has the Museum Square, which houses the Van Gogh Museum, the Rijksmuseum with paintings by Rembrandt and Vermeer and the Amsterdam City Museum dedicated to contemporary art. Bicycles are also very popular in Amsterdam, and there are a large number of bike paths.</string>
+    <string name="paris_description">The capital of France, Paris is one of the main European cities and the world center for culture, art, fashion and gastronomy. In the central part of the city, built in the 19th century, there are wide boulevards and the Seine River. The most famous sights of Paris are the Eiffel Tower and Notre Dame Cathedral in the Gothic style, erected in the XII century. The city is also famous for its numerous cafes and boutiques with clothes from famous fashion designers on the rue Faubourg-Saint-Honoré.</string>
+    <string name="new_york_description">New York includes five boroughs (districts) located at the confluence of the Hudson River into the Atlantic Ocean. Densely populated Manhattan, one of the world\'s largest commercial, financial and cultural centers, is located in the city center. The main attractions of New York are numerous skyscrapers, including the Empire State Building, and the huge Central Park. The Broadway Theater is located in the neon-lit Times Square.</string>
+    <string name="bangkok_description">Bangkok is the capital of Thailand, a huge city known for its ornate temples and vibrant nightlife. The navigable river Chao Phraya flows through the city, which feeds numerous canals with its waters. On the banks of one of the canals lies the royal district of Rattanakosin, where the luxurious Grand Palace, the sacred Phrakeu Temple and Wat Pho with a giant statue of the Resting Buddha are located. On the opposite bank is Wat Arun with steep steps and a Khmer style spire.</string>
+    <string name="madrid_description">Madrid is the capital of Spain in the center of the Iberian Peninsula, a city of elegant boulevards and huge manicured parks, including Buen Retiro Park. The city is famous for its museums of European art. The most famous of them - the Prado Museum - exhibits works by Goya, Velazquez and other Spanish masters. The heart of old Habsburg Madrid is the Plaza Mayor, surrounded by buildings with galleries. Not far from it are the Royal Baroque Palace and the Royal Armory with a collection of historical weapons.</string>
+    <string name="population_title">Population:</string>
+    <string name="square_title">Square:</string>
+    <string name="altitude_title">Altitude:</string>
+    <string name="content_description_city_img">City photography</string>
+    <string name="no_data">No data</string>
+    <string name="population_field">%d people</string>
+    <string name="square_field">%d sq. km.</string>
+    <string name="altitude_field">%d m</string>
+</resources>

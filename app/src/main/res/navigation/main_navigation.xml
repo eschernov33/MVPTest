@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/cityListFragment">
+
+    <fragment
+        android:id="@+id/cityListFragment"
+        android:name="com.evgenii.sbercities.presentation.citylist.CityListFragment"
+        android:label="CityListFragment" >
+        <action
+            android:id="@+id/action_cityListFragment_to_cityDetailFragment"
+            app:destination="@id/cityDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cityDetailFragment"
+        android:name="com.evgenii.sbercities.presentation.citydetail.CityDetailFragment"
+        android:label="CityDetailFragment" >
+        <argument
+            android:name="city"
+            app:argType="com.evgenii.sbercities.models.City" />
+    </fragment>
+</navigation>
