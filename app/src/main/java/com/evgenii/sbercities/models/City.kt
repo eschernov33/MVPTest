@@ -19,4 +19,5 @@ data class City(
         const val NO_DATA = -1
         const val NO_DESCRIPTION = ""
     }
+
 }
