@@ -1,7 +1,6 @@
 package com.evgenii.sbercities.models
 
 import android.os.Parcelable
-import com.evgenii.sbercities.R
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
