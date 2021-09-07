@@ -10,8 +10,8 @@ data class City(
     val countryName: String,
     val population: Int,
     val square: Int,
-    val imgIcon: Int = R.drawable.city_moscow,
-    val imgCityCard: Int = R.drawable.city_moscow,
+    val imgIcon: Int,
+    val imgCityCard: Int,
     val description: String = NO_DESCRIPTION,
     val altitude: Int = NO_DATA,
 ) : Parcelable {
