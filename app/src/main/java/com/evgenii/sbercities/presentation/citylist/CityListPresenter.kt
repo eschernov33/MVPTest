@@ -1,16 +1,13 @@
 package com.evgenii.sbercities.presentation.citylist
 
-import android.content.Context
-import com.evgenii.sbercities.data.CityListRepositoryImpl
 import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityListContract
+import com.evgenii.sbercities.presentation.App
 
-class CityListPresenter(
-    context: Context,
-    private var citiesListView: CityListContract.View,
-) : CityListContract.Presenter {
+class CityListPresenter(private var citiesListView: CityListContract.View) :
+    CityListContract.Presenter {
 
-    private val repository = CityListRepositoryImpl(context)
+    private val repository = App.cityListRepository
 
     override fun onViewCreated() {
         val cityList = repository.loadCities()

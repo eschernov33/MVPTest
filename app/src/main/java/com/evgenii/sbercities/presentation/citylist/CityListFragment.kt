@@ -29,7 +29,7 @@ class CityListFragment : Fragment(), CityListContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        cityListPresenter = CityListPresenter(requireContext(), this)
+        cityListPresenter = CityListPresenter(this)
         cityListPresenter.onViewCreated()
     }
 

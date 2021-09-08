@@ -9,8 +9,7 @@ import com.evgenii.sbercities.mvp.CityDetailContract
 class CityDetailPresenter(
     private val view: CityDetailContract.View,
     private val context: Context,
-) :
-    CityDetailContract.Presenter {
+) : CityDetailContract.Presenter {
 
     override fun onViewCreated(arguments: Bundle) {
         val city = arguments.getParcelable<City>(CityDetailFragment.EXTRA_KEY)
