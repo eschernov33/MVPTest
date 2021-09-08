@@ -1,17 +1,16 @@
 package com.evgenii.sbercities.presentation
 
 import android.app.Application
-import com.evgenii.sbercities.data.CityListRepositoryImpl
-import com.evgenii.sbercities.mvp.CityListContract
+import com.evgenii.sbercities.models.CityModel
 
 class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        cityListRepository = CityListRepositoryImpl(applicationContext)
+        cityModel = CityModel()
     }
 
     companion object {
-        lateinit var cityListRepository: CityListContract.Repository
+        lateinit var cityModel: CityModel
     }
 }

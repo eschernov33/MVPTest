@@ -27,13 +27,14 @@ class CityDetailPresenter(
                     context.getString(R.string.square_field),
                     it.square
                 ))
-                if (it.altitude != City.NO_DATA)
+                if (it.altitude != City.NO_DATA) {
                     setAltitude(String.format(
                         context.getString(R.string.altitude_field),
                         it.altitude
                     ))
-                else
+                } else {
                     setAltitude(context.getString(R.string.no_data))
+                }
             }
         } ?: throw RuntimeException("City is not contains in arguments")
     }
