@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.evgenii.sbercities.databinding.FragmentCityDetailBinding
 import com.evgenii.sbercities.mvp.CityDetailContract
 
@@ -27,8 +28,15 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setListenerBtnBack()
         presenter = CityDetailPresenter(this, requireContext())
         presenter.onViewCreated(requireArguments())
+    }
+
+    private fun setListenerBtnBack() {
+        binding.imgBtnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
     }
 
     override fun setHeaderImage(resId: Int) {

@@ -19,5 +19,8 @@
         <argument
             android:name="city"
             app:argType="com.evgenii.sbercities.models.City" />
+        <action
+            android:id="@+id/action_cityDetailFragment_to_cityListFragment"
+            app:popUpTo="@id/cityListFragment" />
     </fragment>
 </navigation>

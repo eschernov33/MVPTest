@@ -3,9 +3,8 @@ package com.evgenii.sbercities.data
 import android.content.Context
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.models.City
-import com.evgenii.sbercities.mvp.CityListContract
 
-class CityListRepositoryImpl(context: Context) : CityListContract.Repository {
+class CityListRepositoryImpl private constructor(context: Context) : CityListRepository {
 
     private val listCity: List<City> = listOf(
         City(
@@ -70,11 +69,10 @@ class CityListRepositoryImpl(context: Context) : CityListContract.Repository {
         )
     )
 
-    override fun loadCities(): List<City> {
-        return listCity
-    }
+    override fun loadCities() = listCity
 
     companion object {
+
         private const val POPULATION_MOSCOW = 11_920_000
         private const val POPULATION_PARIS = 2_161_000
         private const val POPULATION_NEW_YORK = 8_419_000
@@ -95,5 +93,16 @@ class CityListRepositoryImpl(context: Context) : CityListContract.Repository {
         private const val ALTITUDE_MADRID = 667
         private const val ALTITUDE_AMSTERDAM = 5
         private const val ALTITUDE_BANGKOK = 2
+
+        var repository: CityListRepositoryImpl? = null
+
+        fun getInstance(context: Context): CityListRepositoryImpl {
+            repository?.let {
+                return it
+            }
+            val instance = CityListRepositoryImpl(context)
+            repository = instance
+            return instance
+        }
     }
 }
