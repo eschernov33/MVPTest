@@ -11,10 +11,9 @@ import com.evgenii.sbercities.models.City
 class CityListAdapter(
     private val cityList: List<City>,
     private val context: Context,
+    private val onCityItemClickListener: (city: City) -> Unit,
 ) :
     RecyclerView.Adapter<CityListViewHolder>() {
-
-    var onCityItemClickListener: ((city: City) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityListViewHolder {
         val binding = ItemCityBinding.inflate(
@@ -42,7 +41,7 @@ class CityListAdapter(
             ivIconCity.setImageResource(city.imgIcon)
             ivCityCard.setImageResource(city.imgCityCard)
             root.setOnClickListener {
-                onCityItemClickListener?.invoke(city)
+                onCityItemClickListener.invoke(city)
             }
         }
     }

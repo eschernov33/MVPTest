@@ -40,8 +40,7 @@ class CityListFragment : Fragment(), CityListContract.View {
     }
 
     override fun showCityList(cityList: List<City>) {
-        val adapter = CityListAdapter(cityList, requireContext())
-        adapter.onCityItemClickListener = {
+        val adapter = CityListAdapter(cityList, requireContext()) {
             cityListPresenter.onCitySelected(it)
         }
         binding.rvCityList.adapter = adapter
