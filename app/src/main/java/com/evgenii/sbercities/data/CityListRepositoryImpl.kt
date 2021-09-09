@@ -4,7 +4,7 @@ import android.content.Context
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.models.City
 
-class CityListRepositoryImpl private constructor(context: Context) : CityListRepository {
+class CityListRepositoryImpl(context: Context) : CityListRepository {
 
     private val listCity: List<City> = listOf(
         City(
@@ -94,15 +94,5 @@ class CityListRepositoryImpl private constructor(context: Context) : CityListRep
         private const val ALTITUDE_AMSTERDAM = 5
         private const val ALTITUDE_BANGKOK = 2
 
-        var repository: CityListRepositoryImpl? = null
-
-        fun getInstance(context: Context): CityListRepositoryImpl {
-            repository?.let {
-                return it
-            }
-            val instance = CityListRepositoryImpl(context)
-            repository = instance
-            return instance
-        }
     }
 }

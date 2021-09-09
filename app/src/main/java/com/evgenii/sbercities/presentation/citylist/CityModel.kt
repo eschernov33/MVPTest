@@ -1,5 +1,6 @@
-package com.evgenii.sbercities.models
+package com.evgenii.sbercities.presentation.citylist
 
+import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityListContract
 
 class CityModel : CityListContract.Model {
@@ -10,8 +11,10 @@ class CityModel : CityListContract.Model {
         listCity = cityList
     }
 
-    override fun getCities() = listCity
+    override fun getCities() =
+        listCity
 
-    override fun isLoadedData() = listCity.isNotEmpty()
+    override fun isDataLoaded() =
+        listCity.isNotEmpty()
 
 }

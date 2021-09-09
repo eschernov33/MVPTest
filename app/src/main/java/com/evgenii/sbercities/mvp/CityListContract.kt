@@ -1,6 +1,5 @@
 package com.evgenii.sbercities.mvp
 
-import android.content.Context
 import com.evgenii.sbercities.models.City
 
 interface CityListContract {
@@ -11,7 +10,6 @@ interface CityListContract {
     }
 
     interface Presenter {
-        fun onAttach(context: Context)
         fun onViewCreated()
         fun onCitySelected(city: City)
     }
@@ -19,8 +17,7 @@ interface CityListContract {
     interface Model {
         fun updateCities(cityList: List<City>)
         fun getCities(): List<City>
-        fun isLoadedData(): Boolean
-
+        fun isDataLoaded(): Boolean
     }
 
 }
