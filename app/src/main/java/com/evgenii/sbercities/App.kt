@@ -13,5 +13,4 @@ class App : Application() {
     val repository: CityListRepositoryImpl by lazy {
         CityListRepositoryImpl(applicationContext)
     }
-
 }

@@ -15,7 +15,6 @@ interface CityDetailContract {
     }
 
     interface Presenter {
-        fun onViewCreated(arguments: Bundle)
+        fun init(arguments: Bundle)
     }
-
 }

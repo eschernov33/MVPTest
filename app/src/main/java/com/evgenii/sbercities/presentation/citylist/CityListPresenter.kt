@@ -7,14 +7,11 @@ import com.evgenii.sbercities.mvp.CityListContract
 class CityListPresenter(
     private val citiesListView: CityListContract.View,
     private val cityModel: CityModel,
-    private val repository: CityListRepositoryImpl,
+    private val repository: CityListRepositoryImpl
 ) : CityListContract.Presenter {
 
-    init {
+    override fun init() {
         updateModel()
-    }
-
-    override fun onViewCreated() {
         citiesListView.showCityList(cityModel.getCities())
     }
 
@@ -27,5 +24,4 @@ class CityListPresenter(
     override fun onCitySelected(city: City) {
         citiesListView.showCityDetailInfo(city)
     }
-
 }

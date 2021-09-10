@@ -24,7 +24,7 @@
                 android:layout_height="30dp"
                 android:layout_marginStart="4dp"
                 android:scaleType="fitXY"
-                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"
+                app:shapeAppearanceOverlay="@style/RoundedImageViewRounded"
                 app:srcCompat="@drawable/city_moscow" />
 
             <LinearLayout
@@ -84,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginEnd="6dp"
-                android:textColor="?attr/colorSecondary"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp"
                 tools:text="2 000 000" />
 
@@ -106,7 +106,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
                 android:layout_marginEnd="6dp"
-                android:textColor="?attr/colorSecondary"
+                android:textColor="?attr/colorPrimary"
                 android:textSize="12sp"
                 tools:text="2 560 кв.м" />
 

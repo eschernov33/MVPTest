@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class City(
+class City(
     val cityName: String,
     val countryName: String,
     val population: Int,
@@ -19,5 +19,4 @@ data class City(
         const val NO_DATA = -1
         const val NO_DESCRIPTION = ""
     }
-
 }

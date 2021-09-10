@@ -10,7 +10,7 @@ interface CityListContract {
     }
 
     interface Presenter {
-        fun onViewCreated()
+        fun init()
         fun onCitySelected(city: City)
     }
 
@@ -19,5 +19,4 @@ interface CityListContract {
         fun getCities(): List<City>
         fun isDataLoaded(): Boolean
     }
-
 }
