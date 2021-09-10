@@ -11,31 +11,37 @@ class CityDetailPresenter(
     private val context: Context,
 ) : CityDetailContract.Presenter {
 
-    override fun onViewCreated(arguments: Bundle) {
-        val city = arguments.getParcelable<City>(CityDetailFragment.EXTRA_KEY)
+    override fun init(arguments: Bundle) {
+        val city: City? = arguments.getParcelable(CityDetailFragment.EXTRA_KEY_CITY)
         city?.let {
-            with(view) {
-                setCityName(it.cityName)
-                setCountryName(it.countryName)
-                setDescription(it.description)
-                setHeaderImage(it.imgCityCard)
-                setPopulation(String.format(
-                    context.getString(R.string.population_field),
-                    it.population
-                ))
-                setSquare(String.format(
-                    context.getString(R.string.square_field),
-                    it.square
-                ))
-                if (it.altitude != City.NO_DATA) {
+            setViewsValue(it)
+        } ?: throw RuntimeException("City is not contains in arguments")
+    }
+
+    private fun setViewsValue(city: City) {
+        with(view) {
+            setCityName(city.cityName)
+            setCountryName(city.countryName)
+            setDescription(city.description)
+            setHeaderImage(city.imgCityCard)
+            setPopulation(context.resources.getQuantityString(
+                R.plurals.population_field,
+                city.population,
+                city.population
+            ))
+            setSquare(String.format(
+                context.getString(R.string.square_field),
+                city.square
+            ))
+            when (city.altitude) {
+                City.NO_DATA -> setAltitude(context.getString(R.string.no_data))
+                else -> {
                     setAltitude(String.format(
                         context.getString(R.string.altitude_field),
-                        it.altitude
+                        city.altitude
                     ))
-                } else {
-                    setAltitude(context.getString(R.string.no_data))
                 }
             }
-        } ?: throw RuntimeException("City is not contains in arguments")
+        }
     }
 }

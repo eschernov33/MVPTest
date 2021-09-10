@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.FragmentCityDetailBinding
 import com.evgenii.sbercities.mvp.CityDetailContract
 
 class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     private lateinit var presenter: CityDetailContract.Presenter
-
     private var _binding: FragmentCityDetailBinding? = null
     private val binding: FragmentCityDetailBinding
         get() = _binding ?: throw RuntimeException("FragmentCityDetailBinding == null")
@@ -28,15 +28,22 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setListenerBtnBack()
-        presenter = CityDetailPresenter(this, requireContext())
-        presenter.onViewCreated(requireArguments())
+        setActionBar()
+        initPresenter()
     }
 
-    private fun setListenerBtnBack() {
-        binding.imgBtnBack.setOnClickListener {
-            findNavController().popBackStack()
+    private fun setActionBar() {
+        val actionBar = (activity as AppCompatActivity).supportActionBar
+        actionBar?.let {
+            it.setTitle(R.string.list_of_cities)
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeButtonEnabled(true)
         }
+    }
+
+    private fun initPresenter() {
+        presenter = CityDetailPresenter(this, requireContext())
+        presenter.init(requireArguments())
     }
 
     override fun setHeaderImage(resId: Int) {
@@ -68,6 +75,6 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
     }
 
     companion object {
-        const val EXTRA_KEY = "city"
+        const val EXTRA_KEY_CITY = "city"
     }
 }

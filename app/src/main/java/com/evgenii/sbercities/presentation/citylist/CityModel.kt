@@ -16,5 +16,4 @@ class CityModel : CityListContract.Model {
 
     override fun isDataLoaded() =
         listCity.isNotEmpty()
-
 }
