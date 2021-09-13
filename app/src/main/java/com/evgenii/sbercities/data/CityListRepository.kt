@@ -4,8 +4,7 @@ import com.evgenii.sbercities.models.City
 
 interface CityListRepository {
 
-    fun getCities(): List<City>
+    fun getCities(filterStroke: String? = null, isFavorite: Boolean = false): List<City>
 
     fun updateCity(updatedCity: City)
-
 }

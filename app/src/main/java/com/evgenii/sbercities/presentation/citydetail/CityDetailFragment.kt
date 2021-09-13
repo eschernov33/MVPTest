@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
-import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.FragmentCityDetailBinding
 import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityDetailContract
@@ -51,7 +50,7 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
     private fun setActionBar() {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.let {
-            it.setTitle(R.string.list_of_cities)
+            it.title = city.cityName
             it.setDisplayHomeAsUpEnabled(true)
             it.setHomeButtonEnabled(true)
         }

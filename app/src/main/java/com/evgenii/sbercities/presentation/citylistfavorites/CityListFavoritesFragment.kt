@@ -1,4 +1,4 @@
-package com.evgenii.sbercities.presentation.citylist
+package com.evgenii.sbercities.presentation.citylistfavorites
 
 import android.os.Bundle
 import android.view.*
@@ -9,13 +9,14 @@ import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import com.evgenii.sbercities.App
 import com.evgenii.sbercities.R
-import com.evgenii.sbercities.databinding.FragmentCityListBinding
+import com.evgenii.sbercities.databinding.FragmentCityListFavoritesBinding
 import com.evgenii.sbercities.models.City
-import com.evgenii.sbercities.mvp.CityListContract
+import com.evgenii.sbercities.mvp.CityListFavoritesContract
+import com.evgenii.sbercities.presentation.citylist.CityListAdapter
 
-class CityListFragment : Fragment(), CityListContract.View {
+class CityListFavoritesFragment : Fragment(), CityListFavoritesContract.View {
 
-    private lateinit var cityListPresenter: CityListContract.Presenter
+    private lateinit var cityListPresenter: CityListFavoritesContract.Presenter
 
     private val adapter by lazy {
         CityListAdapter(
@@ -24,16 +25,16 @@ class CityListFragment : Fragment(), CityListContract.View {
         )
     }
 
-    private var _binding: FragmentCityListBinding? = null
-    private val binding: FragmentCityListBinding
-        get() = _binding ?: throw RuntimeException("FragmentCityListBinding == null")
+    private var _binding: FragmentCityListFavoritesBinding? = null
+    private val binding: FragmentCityListFavoritesBinding
+        get() = _binding ?: throw RuntimeException("FragmentCityListFavoritesBinding == null")
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View {
-        _binding = FragmentCityListBinding.inflate(inflater, container, false)
+        _binding = FragmentCityListFavoritesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -49,20 +50,10 @@ class CityListFragment : Fragment(), CityListContract.View {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.city_list_menu, menu)
+        inflater.inflate(R.menu.city_list_favorite_menu, menu)
         initMenuSearchView(menu)
         super.onCreateOptionsMenu(menu, inflater)
     }
-
-    override fun onOptionsItemSelected(item: MenuItem) =
-        when (item.itemId) {
-            R.id.menuBtnFavorite -> {
-                findNavController().navigate(
-                    CityListFragmentDirections.actionCityListFragmentToCityListFavoritesFragment())
-                true
-            }
-            else -> false
-        }
 
     private fun initMenuSearchView(menu: Menu) {
         val menuItem = menu.findItem(R.id.menuBtnSearch)
@@ -82,16 +73,16 @@ class CityListFragment : Fragment(), CityListContract.View {
 
     private fun initPresenter() {
         val app = requireContext().applicationContext as App
-        cityListPresenter = CityListPresenter(this, app.repository)
+        cityListPresenter = CityListFavoritePresenter(this, app.repository)
         cityListPresenter.init()
     }
 
     private fun setActionBar() {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.let {
-            it.setTitle(R.string.list_of_cities)
-            it.setDisplayHomeAsUpEnabled(false)
-            it.setHomeButtonEnabled(false)
+            it.setTitle(R.string.favorites)
+            it.setDisplayHomeAsUpEnabled(true)
+            it.setHomeButtonEnabled(true)
         }
     }
 
@@ -118,7 +109,8 @@ class CityListFragment : Fragment(), CityListContract.View {
 
     override fun showCityDetailInfo(city: City, extras: FragmentNavigator.Extras) {
         findNavController().navigate(
-            CityListFragmentDirections.actionCityListFragmentToCityDetailFragment(city),
+            CityListFavoritesFragmentDirections
+                .actionCityListFavoritesFragmentToCityDetailFragment(city),
             extras
         )
     }

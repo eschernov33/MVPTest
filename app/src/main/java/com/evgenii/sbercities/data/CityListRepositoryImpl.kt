@@ -14,14 +14,22 @@ class CityListRepositoryImpl(private val context: Context) : CityListRepository 
         createDefaultCitiesData()
     }
 
-    override fun getCities() =
-        listCity
+    override fun getCities(filterStroke: String?, isFavorite: Boolean): List<City> {
+        var filteredListCity = listCity.toList().map { it.copy() }
+        if (isFavorite) {
+            filteredListCity = filteredListCity.filter(City::isFavorite)
+        }
+        if (filterStroke != null && filterStroke.isNotEmpty()) {
+            filteredListCity = filteredListCity.filter {
+                it.cityName.contains(filterStroke, true)
+            }
+        }
+        return filteredListCity
+    }
 
     override fun updateCity(updatedCity: City) {
-        listCity.forEach { city ->
-            if (city.cityId == updatedCity.cityId){
-                city.isFavorite = updatedCity.isFavorite
-            }
+        listCity.find { it.cityId == updatedCity.cityId }?.let {
+            it.isFavorite = updatedCity.isFavorite
         }
     }
 

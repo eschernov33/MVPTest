@@ -3,7 +3,7 @@ package com.evgenii.sbercities.mvp
 import androidx.navigation.fragment.FragmentNavigator
 import com.evgenii.sbercities.models.City
 
-interface CityListContract {
+interface CityListFavoritesContract {
 
     interface View {
         fun showCityList(cityList: List<City>)

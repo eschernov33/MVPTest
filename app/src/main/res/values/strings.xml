@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">SberCities</string>
-    <string name="list_of_cities">LIST OF CITIES</string>
+    <string name="list_of_cities">List of cities</string>
     <string name="city_moscow">Moscow</string>
     <string name="city_amsterdam">Amsterdam</string>
     <string name="city_bangkok">Bangkok</string>
@@ -64,7 +64,11 @@
     <string name="square_field">%d sq. km.</string>
     <string name="altitude_field">%d m</string>
     <string name="content_description_city_img">City photography</string>
-    
+    <string name="favorites">Favorites</string>
+    <string name="menu_title_search">Search</string>
+    <string name="menu_title_favorite">Favorite</string>
+    <string name="content_description_add_in_favorites">Add to favorites</string>
+
     <integer translatable="false" name="population_msc_value">11920000</integer>
     <integer translatable="false" name="population_paris_value">2161000</integer>
     <integer translatable="false" name="population_new_york_value">8419000</integer>

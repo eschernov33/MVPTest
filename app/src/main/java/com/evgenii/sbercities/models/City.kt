@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-class City(
+data class City(
     val cityId: Int,
     val cityName: String,
     val countryName: String,
