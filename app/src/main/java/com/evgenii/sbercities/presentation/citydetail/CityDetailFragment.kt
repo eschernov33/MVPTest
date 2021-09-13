@@ -5,13 +5,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
+import androidx.transition.TransitionInflater
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.FragmentCityDetailBinding
+import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityDetailContract
 
 class CityDetailFragment : Fragment(), CityDetailContract.View {
 
+    private val city by lazy {
+        getCityFromArgumentsOrException()
+    }
     private lateinit var presenter: CityDetailContract.Presenter
     private var _binding: FragmentCityDetailBinding? = null
     private val binding: FragmentCityDetailBinding
@@ -29,7 +35,17 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setActionBar()
+        setAnimationParam()
         initPresenter()
+    }
+
+    private fun setAnimationParam() {
+        sharedElementEnterTransition =
+            TransitionInflater.from(context).inflateTransition(android.R.transition.move)
+        ViewCompat.setTransitionName(
+            binding.imgCity,
+            city.getUniqueTransitionName()
+        )
     }
 
     private fun setActionBar() {
@@ -43,7 +59,12 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     private fun initPresenter() {
         presenter = CityDetailPresenter(this, requireContext())
-        presenter.init(requireArguments())
+        presenter.init(city)
+    }
+
+    private fun getCityFromArgumentsOrException(): City {
+        return requireArguments().getParcelable(EXTRA_KEY_CITY)
+            ?: throw java.lang.RuntimeException("City is not contains in arguments")
     }
 
     override fun setHeaderImage(resId: Int) {

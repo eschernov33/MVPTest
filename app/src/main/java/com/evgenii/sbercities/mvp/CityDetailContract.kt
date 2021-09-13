@@ -1,6 +1,6 @@
 package com.evgenii.sbercities.mvp
 
-import android.os.Bundle
+import com.evgenii.sbercities.models.City
 
 interface CityDetailContract {
 
@@ -15,6 +15,6 @@ interface CityDetailContract {
     }
 
     interface Presenter {
-        fun init(arguments: Bundle)
+        fun init(city: City)
     }
 }

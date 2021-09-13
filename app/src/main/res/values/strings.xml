@@ -1,64 +1,89 @@
 <resources>
     <string name="app_name">SberCities</string>
-    <string name="list_of_cities">СПИСОК ГОРОДОВ</string>
-    <string name="city_moscow">Москва</string>
-    <string name="city_amsterdam">Амстердам</string>
-    <string name="city_bangkok">Бангкок</string>
-    <string name="city_madrid">Мадрид</string>
-    <string name="city_new_york">Нью-йорк</string>
-    <string name="city_paris">Париж</string>
-    <string name="country_russia">Россия</string>
-    <string name="country_netherlands">Нидерланды</string>
-    <string name="country_thailand">Тайланд</string>
-    <string name="country_spain">Испания</string>
-    <string name="country_usa">США</string>
-    <string name="country_france">Франция</string>
-    <string name="moscow_description">Москва – столица России, многонациональный город на
-        Москве-реке в западной части страны. В его историческом центре находится средневековая
-        крепость Кремль – резиденция российского президента. На ее территории можно посетить
-        Оружейную палату, где выставляются драгоценные предметы, принадлежавшие царской семье.
-        За северо-восточной стеной Кремля раскинулась Красная площадь – символический центр России.
-        Здесь можно увидеть Мавзолей В. И. Ленина, Государственный исторический музей и собор
-        Василия Блаженного с красочными луковичными куполами.</string>
-    <string name="amsterdam_description">Амстердам – столица Нидерландов, известная сложной сетью
-        каналов, узкими домами с остроконечными крышами и богатым художественным наследием, в том
-        числе XVII века, ставшего золотым в истории этой страны. В городе есть Музейная площадь,
-        где расположены Музей Ван Гога, Рейксмузеум с картинами Рембрандта и Вермеера и Городской
-        музей Амстердама, посвященный современному искусству. Также в Амстердаме очень популярны
-        велосипеды, и здесь большое количество велодорожек.</string>
-    <string name="paris_description">Столица Франции Париж – один из главных европейских городов и
-        мировой центр культуры, искусства, моды и гастрономии. В центральной части города,
-        построенной в XIX веке, проходят широкие бульвары и протекает река Сена. Самые известные
-        достопримечательности Парижа – Эйфелева башня и собор Парижской Богоматери в готическом
-        стиле, возведенный в XII веке. Также город славится своими многочисленными кафе и бутиками
-        с одеждой от известных модельеров на улице Фобур-Сент-Оноре.</string>
-    <string name="new_york_description">Нью-Йорк включает пять боро (районов), расположенных в
-        месте впадения реки Гудзон в Атлантический океан. В центре города расположен
-        густонаселенный Манхэттен – один из крупнейших в мире коммерческих, финансовых и культурных
-        центров. Главные достопримечательности Нью-Йорка – многочисленные небоскребы, в том числе
-        Эмпайр-стейт-билдинг, и огромный Центральный парк. На залитой неоновыми огнями площади
-        Таймс-сквер расположен театр "Бродвей".</string>
-    <string name="bangkok_description">Бангкок – столица Таиланда, огромный город, известный своими
-        богато украшенными храмами и насыщенной ночной жизнью. Через город протекает судоходная
-        река Чаупхрая, которая питает своими водами многочисленные каналы. На берегу одного из
-        каналов лежит королевский район Раттанакосин, где расположены роскошный Большой дворец,
-        священный храм Пхракэу и ват Пхо с гигантской статуей Отдыхающего Будды. На противоположном
-        берегу находится ват Арун с крутыми ступенями и шпилем в кхмерском стиле.</string>
-    <string name="madrid_description">Мадрид – столица Испании в центре Пиренейского полуострова,
-        город элегантных бульваров и огромных ухоженных парков, к числу которых относится парк
-        Буэн-Ретиро. Город славится своими музеями европейского искусства. В самом известном из
-        них – музее Прадо – выставлены работы Гойи, Веласкеса и других испанских мастеров. Сердце
-        старого габсбургского Мадрида – площадь Майор, окруженная зданиями с галереями. Неподалеку
-        от нее расположены Королевский дворец в стиле барокко и Королевская оружейная палата с
-        коллекцией исторического оружия.</string>
-    <string name="population_title">Население:</string>
-    <string name="square_title">Площадь:</string>
-    <string name="altitude_title">Высота над уровнем моря:</string>
-    <string name="no_data">Нет данных</string>
+    <string name="list_of_cities">LIST OF CITIES</string>
+    <string name="city_moscow">Moscow</string>
+    <string name="city_amsterdam">Amsterdam</string>
+    <string name="city_bangkok">Bangkok</string>
+    <string name="city_madrid">Madrid</string>
+    <string name="city_new_york">New-york</string>
+    <string name="city_paris">Paris</string>
+    <string name="country_russia">Russia</string>
+    <string name="country_netherlands">Netherlands</string>
+    <string name="country_thailand">Thailand</string>
+    <string name="country_spain">Spain</string>
+    <string name="country_usa">USA</string>
+    <string name="country_france">France</string>
+    <string name="moscow_description">Moscow is the capital of Russia, a multinational city on the
+        Moskva River in the western part of the country. In its historical center is the medieval
+        fortress Kremlin - the residence of the Russian president. On its territory, you can visit
+        the Armory, where precious items that belonged to the royal family are exhibited. Behind the
+        northeastern wall of the Kremlin is Red Square, the symbolic center of Russia. Here you can
+        see the Lenin Mausoleum, the State Historical Museum and St. Basil\'s Cathedral with
+        colorful onion domes.</string>
+    <string name="amsterdam_description">Amsterdam is the capital of the Netherlands, known for its
+        complex network of canals, narrow houses with gabled roofs and a rich artistic heritage,
+        including the 17th century, which became the golden one in the history of this country. The
+        city has the Museum Square, which houses the Van Gogh Museum, the Rijksmuseum with
+        paintings by Rembrandt and Vermeer and the Amsterdam City Museum dedicated to contemporary
+        art. Bicycles are also very popular in Amsterdam, and there are a large number of bike
+        paths.</string>
+    <string name="paris_description">The capital of France, Paris is one of the main European
+        cities and the world center for culture, art, fashion and gastronomy. In the central part
+        of the city, built in the 19th century, there are wide boulevards and the Seine River. The
+        most famous sights of Paris are the Eiffel Tower and Notre Dame Cathedral in the Gothic
+        style, erected in the XII century. The city is also famous for its numerous cafes and
+        boutiques with clothes from famous fashion designers on the rue
+        Faubourg-Saint-Honoré.</string>
+    <string name="new_york_description">New York includes five boroughs (districts) located at the
+        confluence of the Hudson River into the Atlantic Ocean. Densely populated Manhattan, one
+        of the world\'s largest commercial, financial and cultural centers, is located in the city
+        center. The main attractions of New York are numerous skyscrapers, including the Empire
+        State Building, and the huge Central Park. The Broadway Theater is located in the neon-lit
+        Times Square.</string>
+    <string name="bangkok_description">Bangkok is the capital of Thailand, a huge city known for
+        its ornate temples and vibrant nightlife. The navigable river Chao Phraya flows through
+        the city, which feeds numerous canals with its waters. On the banks of one of the canals
+        lies the royal district of Rattanakosin, where the luxurious Grand Palace, the sacred
+        Phrakeu Temple and Wat Pho with a giant statue of the Resting Buddha are located. On the
+        opposite bank is Wat Arun with steep steps and a Khmer style spire.</string>
+    <string name="madrid_description">Madrid is the capital of Spain in the center of the Iberian
+        Peninsula, a city of elegant boulevards and huge manicured parks, including Buen Retiro
+        Park. The city is famous for its museums of European art. The most famous of them - the
+        Prado Museum - exhibits works by Goya, Velazquez and other Spanish masters. The heart of
+        old Habsburg Madrid is the Plaza Mayor, surrounded by buildings with galleries. Not far
+        from it are the Royal Baroque Palace and the Royal Armory with a collection of historical
+        weapons.</string>
+    <string name="population_title">Population:</string>
+    <string name="square_title">Square:</string>
+    <string name="altitude_title">Altitude:</string>
+    <string name="no_data">No data</string>
     <plurals name="population_field">
-        <item quantity="other">%d человек</item>
+        <item quantity="one">%d person</item>
+        <item quantity="other">%d people</item>
     </plurals>
-    <string name="square_field">%d кв. км.</string>
-    <string name="altitude_field">%d м</string>
-    <string name="content_description_city_img">Фотография города</string>
+    <string name="square_field">%d sq. km.</string>
+    <string name="altitude_field">%d m</string>
+    <string name="content_description_city_img">City photography</string>
+    
+    <integer translatable="false" name="population_msc_value">11920000</integer>
+    <integer translatable="false" name="population_paris_value">2161000</integer>
+    <integer translatable="false" name="population_new_york_value">8419000</integer>
+    <integer translatable="false" name="population_madrid_value">3223000</integer>
+    <integer translatable="false" name="population_amsterdam_value">821752</integer>
+    <integer translatable="false" name="population_bangkok_value">5676000</integer>
+
+    <integer translatable="false" name="square_msc_value">2511</integer>
+    <integer translatable="false" name="square_paris_value">105</integer>
+    <integer translatable="false" name="square_new_york_value">784</integer>
+    <integer translatable="false" name="square_madrid_value">604</integer>
+    <integer translatable="false" name="square_amsterdam_value">219</integer>
+    <integer translatable="false" name="square_bangkok_value">1569</integer>
+
+    <integer translatable="false" name="altitude_msc_value">130</integer>
+    <integer translatable="false" name="altitude_paris_value">35</integer>
+    <integer translatable="false" name="altitude_new_york_value">10</integer>
+    <integer translatable="false" name="altitude_madrid_value">667</integer>
+    <integer translatable="false" name="altitude_amsterdam_value">5</integer>
+    <integer translatable="false" name="altitude_bangkok_value">2</integer>
+
 </resources>

@@ -10,7 +10,11 @@
         android:label="CityListFragment" >
         <action
             android:id="@+id/action_cityListFragment_to_cityDetailFragment"
-            app:destination="@id/cityDetailFragment" />
+            app:destination="@id/cityDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
     <fragment
         android:id="@+id/cityDetailFragment"
@@ -21,6 +25,10 @@
             app:argType="com.evgenii.sbercities.models.City" />
         <action
             android:id="@+id/action_cityDetailFragment_to_cityListFragment"
-            app:popUpTo="@id/cityListFragment" />
+            app:popUpTo="@id/cityListFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
     </fragment>
 </navigation>

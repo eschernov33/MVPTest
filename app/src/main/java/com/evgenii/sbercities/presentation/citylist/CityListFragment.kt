@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.FragmentNavigator
 import androidx.navigation.fragment.findNavController
 import com.evgenii.sbercities.App
 import com.evgenii.sbercities.R
@@ -51,15 +52,27 @@ class CityListFragment : Fragment(), CityListContract.View {
     }
 
     override fun showCityList(cityList: List<City>) {
-        val adapter = CityListAdapter(cityList, requireContext()) {
-            cityListPresenter.onCitySelected(it)
-        }
+        val adapter = CityListAdapter(
+            cityList,
+            requireContext(),
+            cityListPresenter::onCitySelected
+        )
         binding.rvCityList.adapter = adapter
+        setAnimSharedTransition()
     }
 
-    override fun showCityDetailInfo(city: City) {
+    private fun setAnimSharedTransition() {
+        postponeEnterTransition()
+        binding.rvCityList.viewTreeObserver.addOnPreDrawListener {
+            startPostponedEnterTransition()
+            true
+        }
+    }
+
+    override fun showCityDetailInfo(city: City, extras: FragmentNavigator.Extras) {
         findNavController().navigate(
-            CityListFragmentDirections.actionCityListFragmentToCityDetailFragment(city)
+            CityListFragmentDirections.actionCityListFragmentToCityDetailFragment(city),
+            extras
         )
     }
 

@@ -4,5 +4,8 @@ import com.evgenii.sbercities.models.City
 
 interface CityListRepository {
 
-    fun loadCities(): List<City>
+    fun getCities(): List<City>
+
+    fun updateCity(updatedCity: City)
+
 }

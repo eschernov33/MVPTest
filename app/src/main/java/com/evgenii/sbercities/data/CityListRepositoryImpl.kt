@@ -4,94 +4,97 @@ import android.content.Context
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.models.City
 
-class CityListRepositoryImpl(context: Context) : CityListRepository {
+class CityListRepositoryImpl(private val context: Context) : CityListRepository {
 
-    private val listCity: List<City> = listOf(
-        City(
-            context.getString(R.string.city_moscow),
-            context.getString(R.string.country_russia),
-            POPULATION_MOSCOW,
-            SQUARE_MOSCOW,
-            description = context.getString(R.string.moscow_description),
-            imgCityCard = R.drawable.city_moscow,
-            imgIcon = R.drawable.flag_msc,
-            altitude = ALTITUDE_MOSCOW,
-        ),
-        City(
-            context.getString(R.string.city_amsterdam),
-            context.getString(R.string.country_netherlands),
-            POPULATION_AMSTERDAM,
-            SQUARE_AMSTERDAM,
-            description = context.getString(R.string.amsterdam_description),
-            imgCityCard = R.drawable.city_amsterdam,
-            imgIcon = R.drawable.flag_amsterdam,
-            altitude = ALTITUDE_AMSTERDAM
-        ),
-        City(
-            context.getString(R.string.city_bangkok),
-            context.getString(R.string.country_thailand),
-            POPULATION_BANGKOK,
-            SQUARE_BANGKOK,
-            description = context.getString(R.string.bangkok_description),
-            imgCityCard = R.drawable.city_bangkok,
-            imgIcon = R.drawable.flag_bangkok,
-            altitude = ALTITUDE_BANGKOK
-        ),
-        City(
-            context.getString(R.string.city_madrid),
-            context.getString(R.string.country_spain),
-            POPULATION_MADRID,
-            SQUARE_MADRID,
-            description = context.getString(R.string.madrid_description),
-            imgCityCard = R.drawable.city_madrid,
-            imgIcon = R.drawable.flag_madrid,
-            altitude = ALTITUDE_MADRID
-        ),
-        City(
-            context.getString(R.string.city_new_york),
-            context.getString(R.string.country_usa),
-            POPULATION_NEW_YORK,
-            SQUARE_NEW_YORK,
-            description = context.getString(R.string.new_york_description),
-            imgCityCard = R.drawable.city_new_york,
-            imgIcon = R.drawable.flag_new_york,
-            altitude = ALTITUDE_NEW_YORK
-        ),
-        City(
-            context.getString(R.string.city_paris),
-            context.getString(R.string.country_france),
-            POPULATION_PARIS,
-            SQUARE_PARIS,
-            description = context.getString(R.string.paris_description),
-            imgCityCard = R.drawable.city_paris,
-            imgIcon = R.drawable.flag_paris,
-            altitude = ALTITUDE_PARIS
-        )
-    )
+    private var cityId = FIRST_CITY_ID
 
-    override fun loadCities() =
+    private val listCity = mutableListOf<City>()
+
+    init {
+        createDefaultCitiesData()
+    }
+
+    override fun getCities() =
         listCity
 
+    override fun updateCity(updatedCity: City) {
+        listCity.forEach { city ->
+            if (city.cityId == updatedCity.cityId){
+                city.isFavorite = updatedCity.isFavorite
+            }
+        }
+    }
+
+    private fun createDefaultCitiesData() {
+        listCity.add(City(
+            cityId++,
+            context.getString(R.string.city_moscow),
+            context.getString(R.string.country_russia),
+            context.resources.getInteger(R.integer.population_msc_value),
+            context.resources.getInteger(R.integer.square_msc_value),
+            description = context.getString(R.string.moscow_description),
+            imgCityCardResId = R.drawable.city_moscow,
+            imgIconResId = R.drawable.flag_msc,
+            altitude = context.resources.getInteger(R.integer.altitude_msc_value)))
+
+        listCity.add(City(
+            cityId++,
+            context.getString(R.string.city_amsterdam),
+            context.getString(R.string.country_netherlands),
+            context.resources.getInteger(R.integer.population_amsterdam_value),
+            context.resources.getInteger(R.integer.square_amsterdam_value),
+            description = context.getString(R.string.amsterdam_description),
+            imgCityCardResId = R.drawable.city_amsterdam,
+            imgIconResId = R.drawable.flag_amsterdam,
+            altitude = context.resources.getInteger(R.integer.altitude_amsterdam_value)))
+
+        listCity.add(City(
+            cityId++,
+            context.getString(R.string.city_bangkok),
+            context.getString(R.string.country_thailand),
+            context.resources.getInteger(R.integer.population_bangkok_value),
+            context.resources.getInteger(R.integer.square_bangkok_value),
+            description = context.getString(R.string.bangkok_description),
+            imgCityCardResId = R.drawable.city_bangkok,
+            imgIconResId = R.drawable.flag_bangkok,
+            altitude = context.resources.getInteger(R.integer.altitude_bangkok_value)))
+
+        listCity.add(City(
+            cityId++,
+            context.getString(R.string.city_madrid),
+            context.getString(R.string.country_spain),
+            context.resources.getInteger(R.integer.population_madrid_value),
+            context.resources.getInteger(R.integer.square_madrid_value),
+            description = context.getString(R.string.madrid_description),
+            imgCityCardResId = R.drawable.city_madrid,
+            imgIconResId = R.drawable.flag_madrid,
+            altitude = context.resources.getInteger(R.integer.altitude_madrid_value)))
+
+
+        listCity.add(City(
+            cityId++,
+            context.getString(R.string.city_new_york),
+            context.getString(R.string.country_usa),
+            context.resources.getInteger(R.integer.population_new_york_value),
+            context.resources.getInteger(R.integer.square_new_york_value),
+            description = context.getString(R.string.new_york_description),
+            imgCityCardResId = R.drawable.city_new_york,
+            imgIconResId = R.drawable.flag_new_york,
+            altitude = context.resources.getInteger(R.integer.altitude_new_york_value)))
+
+        listCity.add(City(
+            cityId++,
+            context.getString(R.string.city_paris),
+            context.getString(R.string.country_france),
+            context.resources.getInteger(R.integer.population_paris_value),
+            context.resources.getInteger(R.integer.square_paris_value),
+            description = context.getString(R.string.paris_description),
+            imgCityCardResId = R.drawable.city_paris,
+            imgIconResId = R.drawable.flag_paris,
+            altitude = context.resources.getInteger(R.integer.altitude_paris_value)))
+    }
+
     companion object {
-        private const val POPULATION_MOSCOW = 11_920_000
-        private const val POPULATION_PARIS = 2_161_000
-        private const val POPULATION_NEW_YORK = 8_419_000
-        private const val POPULATION_MADRID = 3_223_000
-        private const val POPULATION_AMSTERDAM = 821_752
-        private const val POPULATION_BANGKOK = 5_676_000
-
-        private const val SQUARE_MOSCOW = 2511
-        private const val SQUARE_PARIS = 105
-        private const val SQUARE_NEW_YORK = 784
-        private const val SQUARE_MADRID = 604
-        private const val SQUARE_AMSTERDAM = 219
-        private const val SQUARE_BANGKOK = 1569
-
-        private const val ALTITUDE_MOSCOW = 130
-        private const val ALTITUDE_PARIS = 35
-        private const val ALTITUDE_NEW_YORK = 10
-        private const val ALTITUDE_MADRID = 667
-        private const val ALTITUDE_AMSTERDAM = 5
-        private const val ALTITUDE_BANGKOK = 2
+        private const val FIRST_CITY_ID = 1
     }
 }
