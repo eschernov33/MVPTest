@@ -1,15 +1,22 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
     <style name="Theme.SberCities" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
         <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/teal_700</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
         <item name="colorOnSecondary">@color/white</item>
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="toolbarBackground">@color/purple_700</item>
+        <item name="cardCityBackground">@color/white</item>
+        <item name="mainBackgroundColor">@color/white</item>
+        <item name="cityDetailBackgroundColor">@color/white</item>
+        <item name="scrimToolbarTitleStart">@color/white</item>
+        <item name="scrimToolbarTitleCenter">@color/white_translucent_70</item>
+        <item name="scrimToolbarTitleEnd">@android:color/transparent</item>
+        <item name="cityDetailContentBackground">?attr/colorPrimary</item>
+        <item name="android:background">?attr/mainBackgroundColor</item>
     </style>
-    
+
     <style name="TextView">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -56,13 +63,6 @@
     <style name="RoundedImageViewRounded" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
-    </style>
-
-    <style name="TextAppearance.Design.CollapsingToolbar.Expanded.Shadow">
-        <item name="android:shadowDy">0</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowRadius">10</item>
-        <item name="android:shadowColor">@android:color/white</item>
     </style>
 
 </resources>

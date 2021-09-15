@@ -92,7 +92,7 @@ class CityListFragment : Fragment(), CityListContract.View {
         val toolbar = binding.toolbarCityList.toolbar
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
         (activity as AppCompatActivity).supportActionBar?.let { actionBar ->
-            actionBar.setTitle(R.string.list_of_cities)
+            actionBar.setTitle(R.string.app_name)
             actionBar.setDisplayHomeAsUpEnabled(false)
             actionBar.setHomeButtonEnabled(false)
         }

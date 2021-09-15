@@ -69,7 +69,6 @@ class CityListRepositoryImpl(private val context: Context) : CityListRepository 
                 imgIconResId = R.drawable.flag_madrid,
                 altitude = context.resources.getInteger(R.integer.altitude_madrid_value)))
 
-
             add(City(
                 cityId++,
                 context.getString(R.string.city_new_york),

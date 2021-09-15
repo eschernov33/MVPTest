@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="4dp"
+    android:background="?attr/cardCityBackground"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-   >
+    android:foreground="?android:attr/selectableItemBackground">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clItemCityContent"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/main_background_color">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/ivIconCity"
@@ -47,10 +48,10 @@
 
         <ImageButton
             android:id="@+id/imgBtnIsFavorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
             android:layout_marginEnd="12dp"
-            android:background="@color/white"
+            android:background="@android:color/transparent"
             android:contentDescription="@string/content_description_add_in_favorites"
             android:src="@drawable/ic_favorite_disable"
             app:layout_constraintBottom_toTopOf="@id/ivCityCard"

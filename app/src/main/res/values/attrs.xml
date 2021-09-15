@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="toolbarBackground" format="reference" />
+    <attr name="cardCityBackground" format="reference" />
+    <attr name="mainBackgroundColor" format="reference" />
+    <attr name="cityDetailContentBackground" format="reference" />
+    <attr name="cityDetailBackgroundColor" format="reference" />
+    <attr name="scrimToolbarTitleStart" format="reference" />
+    <attr name="scrimToolbarTitleCenter" format="reference" />
+    <attr name="scrimToolbarTitleEnd" format="reference" />
+</resources>

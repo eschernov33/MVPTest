@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">SberCities</string>
-    <string name="list_of_cities">List of cities</string>
     <string name="city_moscow">Moscow</string>
     <string name="city_amsterdam">Amsterdam</string>
     <string name="city_bangkok">Bangkok</string>
@@ -68,27 +67,26 @@
     <string name="menu_title_search">Search</string>
     <string name="menu_title_favorite">Favorite</string>
     <string name="content_description_add_in_favorites">Add to favorites</string>
-    <string name="empty_favorite_list_title">Добавьте города в избранное</string>
+    <string name="empty_favorite_list_title"> List is empty</string>
 
-    <integer translatable="false" name="population_msc_value">11920000</integer>
-    <integer translatable="false" name="population_paris_value">2161000</integer>
-    <integer translatable="false" name="population_new_york_value">8419000</integer>
-    <integer translatable="false" name="population_madrid_value">3223000</integer>
-    <integer translatable="false" name="population_amsterdam_value">821752</integer>
-    <integer translatable="false" name="population_bangkok_value">5676000</integer>
+    <integer name="population_msc_value" translatable="false">11920000</integer>
+    <integer name="population_paris_value" translatable="false">2161000</integer>
+    <integer name="population_new_york_value" translatable="false">8419000</integer>
+    <integer name="population_madrid_value" translatable="false">3223000</integer>
+    <integer name="population_amsterdam_value" translatable="false">821752</integer>
+    <integer name="population_bangkok_value" translatable="false">5676000</integer>
 
-    <integer translatable="false" name="square_msc_value">2511</integer>
-    <integer translatable="false" name="square_paris_value">105</integer>
-    <integer translatable="false" name="square_new_york_value">784</integer>
-    <integer translatable="false" name="square_madrid_value">604</integer>
-    <integer translatable="false" name="square_amsterdam_value">219</integer>
-    <integer translatable="false" name="square_bangkok_value">1569</integer>
+    <integer name="square_msc_value" translatable="false">2511</integer>
+    <integer name="square_paris_value" translatable="false">105</integer>
+    <integer name="square_new_york_value" translatable="false">784</integer>
+    <integer name="square_madrid_value" translatable="false">604</integer>
+    <integer name="square_amsterdam_value" translatable="false">219</integer>
+    <integer name="square_bangkok_value" translatable="false">1569</integer>
 
-    <integer translatable="false" name="altitude_msc_value">130</integer>
-    <integer translatable="false" name="altitude_paris_value">35</integer>
-    <integer translatable="false" name="altitude_new_york_value">10</integer>
-    <integer translatable="false" name="altitude_madrid_value">667</integer>
-    <integer translatable="false" name="altitude_amsterdam_value">5</integer>
-    <integer translatable="false" name="altitude_bangkok_value">2</integer>
-
+    <integer name="altitude_msc_value" translatable="false">130</integer>
+    <integer name="altitude_paris_value" translatable="false">35</integer>
+    <integer name="altitude_new_york_value" translatable="false">10</integer>
+    <integer name="altitude_madrid_value" translatable="false">667</integer>
+    <integer name="altitude_amsterdam_value" translatable="false">5</integer>
+    <integer name="altitude_bangkok_value" translatable="false">2</integer>
 </resources>

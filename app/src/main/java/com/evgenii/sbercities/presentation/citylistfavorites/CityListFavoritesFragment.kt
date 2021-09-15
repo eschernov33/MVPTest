@@ -100,8 +100,10 @@ class CityListFavoritesFragment : Fragment(), CityListContract.View {
         adapter.submitList(cityList)
         if (cityList.isEmpty()) {
             binding.rvCityList.visibility = View.GONE
+            binding.tvEmptyList.visibility = View.VISIBLE
         } else {
             binding.rvCityList.visibility = View.VISIBLE
+            binding.tvEmptyList.visibility = View.GONE
         }
     }
 

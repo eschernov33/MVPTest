@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">SberCities</string>
-    <string name="list_of_cities">Список городов</string>
     <string name="city_moscow">Москва</string>
     <string name="city_amsterdam">Амстердам</string>
     <string name="city_bangkok">Бангкок</string>
@@ -68,5 +67,5 @@
     <string name="menu_title_search">Поиск</string>
     <string name="menu_title_favorite">Избранное</string>
     <string name="content_description_add_in_favorites">Добавить в избранное</string>
-    <string name="empty_favorite_list_title">Добавьте города в избранное</string>
+    <string name="empty_favorite_list_title">Список пуст</string>
 </resources>
