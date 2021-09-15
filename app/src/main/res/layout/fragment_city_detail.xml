@@ -1,162 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-    <ImageView
-        android:id="@+id/imgCity"
-        android:layout_width="0dp"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarCityImage"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="@string/content_description_city_img"
-        android:src="@drawable/city_moscow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:fitsSystemWindows="true"
+        app:elevation="0dp">
 
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/black_transparent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/imgCity"
-        app:layout_constraintEnd_toEndOf="@id/imgCity"
-        app:layout_constraintStart_toStartOf="@id/imgCity">
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:fitsSystemWindows="true"
+            app:expandedTitleTextAppearance="@style/TextAppearance.Design.CollapsingToolbar.Expanded.Shadow"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
-        <TextView
-            android:id="@+id/tvCityName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="36sp"
-            android:textStyle="bold"
-            tools:text="MOSCOW" />
+            <ImageView
+                android:id="@+id/imgCity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/content_description_city_img"
+                android:fitsSystemWindows="true"
+                android:maxHeight="300dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/city_moscow"
+                app:layout_collapseMode="parallax" />
 
-        <TextView
-            android:id="@+id/tvCountryName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            tools:text="RUSSIA" />
-    </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_alignBottom="@+id/image"
+                android:layout_gravity="bottom"
+                android:background="@drawable/scrim_bottom" />
 
-    <ScrollView
-        android:id="@+id/svContent"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:fillViewport="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgCity">
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbarCityDetail"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollViewCityDetail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_city_detail_description"
+        android:overScrollMode="never"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clCityDetailContent"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="vertical">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/glBegin"
-                android:layout_width="1dp"
-                android:layout_height="0dp"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="10dp" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/glEnd"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="10dp" />
+            android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/tvPopulationTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/population_title"
-                android:textColor="@color/main_text_color"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/glBegin"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/tvPopulation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/tvPopulationTitle"
-                app:layout_constraintStart_toEndOf="@id/tvPopulationTitle"
-                app:layout_constraintTop_toTopOf="@id/tvPopulationTitle"
-                tools:text="2 000 000" />
-
-            <TextView
-                android:id="@+id/tvSquareTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/tvCountryName"
+                style="@style/TextView.Primary.White.Big"
                 android:layout_marginTop="8dp"
-                android:text="@string/square_title"
-                android:textColor="@color/main_text_color"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/glBegin"
-                app:layout_constraintTop_toBottomOf="@id/tvPopulationTitle" />
+                android:gravity="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="RUSSIA" />
 
             <TextView
-                android:id="@+id/tvSquare"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/tvSquareTitle"
-                app:layout_constraintStart_toEndOf="@id/tvSquareTitle"
-                app:layout_constraintTop_toTopOf="@id/tvSquareTitle"
-                tools:text="2 000 кв.м" />
+                android:id="@+id/tvCityName"
+                style="@style/TextView.Primary.White.Title"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCountryName"
+                tools:text="MOSCOW" />
 
-            <TextView
-                android:id="@+id/tvAltitudeTitle"
+            <ScrollView
+                android:id="@+id/svContent"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="@string/altitude_title"
-                android:textColor="@color/main_text_color"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@id/glBegin"
-                app:layout_constraintTop_toBottomOf="@id/tvSquareTitle" />
+                android:layout_height="match_parent"
+                android:fillViewport="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvCityName">
 
-            <TextView
-                android:id="@+id/tvAltitude"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="6dp"
-                android:textColor="?attr/colorPrimary"
-                android:textSize="12sp"
-                app:layout_constraintBottom_toBottomOf="@id/tvAltitudeTitle"
-                app:layout_constraintStart_toEndOf="@id/tvAltitudeTitle"
-                app:layout_constraintTop_toTopOf="@id/tvAltitudeTitle"
-                tools:text="250 м" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clCityDetailContentDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="vertical">
 
-            <TextView
-                android:id="@+id/tvDescription"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textColor="@color/main_text_color"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="@id/glEnd"
-                app:layout_constraintStart_toStartOf="@id/glBegin"
-                app:layout_constraintTop_toBottomOf="@id/tvAltitude"
-                tools:text="@tools:sample/lorem/random" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/glBegin"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="10dp" />
+
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/glEnd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_end="10dp" />
+
+                    <TextView
+                        android:id="@+id/tvPopulationTitle"
+                        style="@style/TextView.Primary.White.Title"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/population_title"
+                        app:layout_constraintStart_toStartOf="@id/glBegin"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tvPopulation"
+                        style="@style/TextView.Secondary.White"
+                        android:layout_marginHorizontal="6dp"
+                        app:layout_constraintBottom_toBottomOf="@id/tvPopulationTitle"
+                        app:layout_constraintStart_toEndOf="@id/tvPopulationTitle"
+                        app:layout_constraintTop_toTopOf="@id/tvPopulationTitle"
+                        tools:text="2 000 000" />
+
+                    <TextView
+                        android:id="@+id/tvSquareTitle"
+                        style="@style/TextView.Primary.White.Title"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/square_title"
+                        app:layout_constraintStart_toStartOf="@id/glBegin"
+                        app:layout_constraintTop_toBottomOf="@id/tvPopulationTitle" />
+
+                    <TextView
+                        android:id="@+id/tvSquare"
+                        style="@style/TextView.Secondary.White"
+                        android:layout_marginHorizontal="6dp"
+                        app:layout_constraintBottom_toBottomOf="@id/tvSquareTitle"
+                        app:layout_constraintStart_toEndOf="@id/tvSquareTitle"
+                        app:layout_constraintTop_toTopOf="@id/tvSquareTitle"
+                        tools:text="2 000 кв.м" />
+
+                    <TextView
+                        android:id="@+id/tvAltitudeTitle"
+                        style="@style/TextView.Primary.White.Title"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/altitude_title"
+                        app:layout_constraintStart_toStartOf="@id/glBegin"
+                        app:layout_constraintTop_toBottomOf="@id/tvSquareTitle" />
+
+                    <TextView
+                        android:id="@+id/tvAltitude"
+                        style="@style/TextView.Secondary.White"
+                        android:layout_marginHorizontal="6dp"
+                        app:layout_constraintBottom_toBottomOf="@id/tvAltitudeTitle"
+                        app:layout_constraintStart_toEndOf="@id/tvAltitudeTitle"
+                        app:layout_constraintTop_toTopOf="@id/tvAltitudeTitle"
+                        tools:text="250 м" />
+
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        style="@style/TextView.Secondary.White"
+                        android:layout_width="0dp"
+                        android:layout_marginTop="10dp"
+                        android:gravity="fill_horizontal"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@id/glEnd"
+                        app:layout_constraintStart_toStartOf="@id/glBegin"
+                        app:layout_constraintTop_toBottomOf="@id/tvAltitude"
+                        tools:text="@tools:sample/lorem/random" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFavorite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:contentDescription="@string/content_description_add_in_favorites"
+        android:src="@drawable/ic_favorite_disable"
+        app:layout_anchor="@id/appBarCityImage"
+        app:layout_anchorGravity="bottom|end|right"
+        app:maxImageSize="28dp"
+        app:tint="@color/white" />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -17,7 +17,7 @@ data class City(
     val imgCityCardResId: Int,
     val description: String = NO_DESCRIPTION,
     val altitude: Int = NO_DATA,
-    var isFavorite: Boolean = false
+    var isFavorite: Boolean = false,
 ) : Parcelable {
 
     fun getUniqueTransitionName() =

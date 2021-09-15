@@ -68,4 +68,5 @@
     <string name="menu_title_search">Поиск</string>
     <string name="menu_title_favorite">Избранное</string>
     <string name="content_description_add_in_favorites">Добавить в избранное</string>
+    <string name="empty_favorite_list_title">Добавьте города в избранное</string>
 </resources>

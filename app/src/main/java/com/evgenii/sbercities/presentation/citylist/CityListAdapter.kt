@@ -45,6 +45,7 @@ class CityListAdapter(
             ivCityCard.setImageResource(city.imgCityCardResId)
             setFavoriteButton(imgBtnIsFavorite, city.isFavorite)
             imgBtnIsFavorite.setOnClickListener {
+                setFavoriteButton(imgBtnIsFavorite, !city.isFavorite)
                 onCityFavoriteButtonClickListener?.invoke(city)
             }
             root.setOnClickListener {

@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionInflater
+import com.evgenii.sbercities.App
+import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.FragmentCityDetailBinding
 import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityDetailContract
@@ -36,6 +38,13 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
         setActionBar()
         setAnimationParam()
         initPresenter()
+        setFavoriteButtonListener()
+    }
+
+    private fun setFavoriteButtonListener() {
+        binding.fabFavorite.setOnClickListener {
+            presenter.onFavoriteClick(city)
+        }
     }
 
     private fun setAnimationParam() {
@@ -48,16 +57,18 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
     }
 
     private fun setActionBar() {
-        val actionBar = (activity as AppCompatActivity).supportActionBar
-        actionBar?.let {
-            it.title = city.cityName
-            it.setDisplayHomeAsUpEnabled(true)
-            it.setHomeButtonEnabled(true)
+        val toolbar = binding.toolbarCityDetail
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.let { actionBar ->
+            actionBar.title = city.cityName
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeButtonEnabled(true)
         }
     }
 
     private fun initPresenter() {
-        presenter = CityDetailPresenter(this, requireContext())
+        val app = requireContext().applicationContext as App
+        presenter = CityDetailPresenter(this, requireContext(), app.repository)
         presenter.init(city)
     }
 
@@ -92,6 +103,13 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     override fun setDescription(description: String) {
         binding.tvDescription.text = description
+    }
+
+    override fun setFavoriteButton(isFavorite: Boolean) {
+        binding.fabFavorite.setImageResource(
+            if (isFavorite) R.drawable.ic_favorite_enable
+            else R.drawable.ic_favorite_disable
+        )
     }
 
     companion object {

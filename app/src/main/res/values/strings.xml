@@ -68,6 +68,7 @@
     <string name="menu_title_search">Search</string>
     <string name="menu_title_favorite">Favorite</string>
     <string name="content_description_add_in_favorites">Add to favorites</string>
+    <string name="empty_favorite_list_title">Добавьте города в избранное</string>
 
     <integer translatable="false" name="population_msc_value">11920000</integer>
     <integer translatable="false" name="population_paris_value">2161000</integer>

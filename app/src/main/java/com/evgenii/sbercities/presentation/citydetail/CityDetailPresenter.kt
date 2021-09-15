@@ -2,13 +2,16 @@ package com.evgenii.sbercities.presentation.citydetail
 
 import android.content.Context
 import com.evgenii.sbercities.R
+import com.evgenii.sbercities.data.CityListRepositoryImpl
 import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityDetailContract
 
 class CityDetailPresenter(
     private val view: CityDetailContract.View,
     private val context: Context,
-) : CityDetailContract.Presenter {
+    private val repository: CityListRepositoryImpl,
+
+    ) : CityDetailContract.Presenter {
 
     override fun init(city: City) {
         setViewsValue(city)
@@ -32,6 +35,13 @@ class CityDetailPresenter(
                     setAltitude(context.resources.getString(R.string.altitude_field, city.altitude))
                 }
             }
+            setFavoriteButton(city.isFavorite)
         }
+    }
+
+    override fun onFavoriteClick(city: City) {
+        city.isFavorite = !city.isFavorite
+        repository.updateCity(city)
+        view.setFavoriteButton(city.isFavorite)
     }
 }

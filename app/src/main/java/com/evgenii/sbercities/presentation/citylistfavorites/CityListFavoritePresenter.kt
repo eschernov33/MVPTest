@@ -1,26 +1,20 @@
 package com.evgenii.sbercities.presentation.citylistfavorites
 
-import android.view.View
-import androidx.navigation.fragment.FragmentNavigatorExtras
 import com.evgenii.sbercities.data.CityListRepositoryImpl
 import com.evgenii.sbercities.models.City
-import com.evgenii.sbercities.mvp.CityListFavoritesContract
+import com.evgenii.sbercities.mvp.CityListContract
+import com.evgenii.sbercities.presentation.citylist.CityListPresenter
 
 class CityListFavoritePresenter(
-    private val citiesListView: CityListFavoritesContract.View,
+    private val citiesListView: CityListContract.View,
     private val repository: CityListRepositoryImpl,
-) : CityListFavoritesContract.Presenter {
+) : CityListPresenter(citiesListView, repository) {
 
     override fun init() {
         citiesListView.showCityList(repository.getCities(isFavorite = true))
     }
 
-    override fun onCitySelected(city: City, view: View) {
-        val extras = FragmentNavigatorExtras(view to city.getUniqueTransitionName())
-        citiesListView.showCityDetailInfo(city, extras)
-    }
-
-    override fun onFavoriteClick(city: City) {
+    override fun onFavoriteClick(city: City, query: String?) {
         val cityUpdate = city.copy(isFavorite = !city.isFavorite)
         repository.updateCity(cityUpdate)
         citiesListView.updateCityList(repository.getCities(isFavorite = true))

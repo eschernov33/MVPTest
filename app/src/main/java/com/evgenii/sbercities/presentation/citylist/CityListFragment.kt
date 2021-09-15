@@ -24,6 +24,8 @@ class CityListFragment : Fragment(), CityListContract.View {
         )
     }
 
+    private lateinit var searchView: SearchView
+
     private var _binding: FragmentCityListBinding? = null
     private val binding: FragmentCityListBinding
         get() = _binding ?: throw RuntimeException("FragmentCityListBinding == null")
@@ -66,7 +68,7 @@ class CityListFragment : Fragment(), CityListContract.View {
 
     private fun initMenuSearchView(menu: Menu) {
         val menuItem = menu.findItem(R.id.menuBtnSearch)
-        val searchView = menuItem.actionView as SearchView
+        searchView = menuItem.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 cityListPresenter.onFilterApply(query)
@@ -87,21 +89,26 @@ class CityListFragment : Fragment(), CityListContract.View {
     }
 
     private fun setActionBar() {
-        val actionBar = (activity as AppCompatActivity).supportActionBar
-        actionBar?.let {
-            it.setTitle(R.string.list_of_cities)
-            it.setDisplayHomeAsUpEnabled(false)
-            it.setHomeButtonEnabled(false)
+        val toolbar = binding.toolbarCityList.toolbar
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.let { actionBar ->
+            actionBar.setTitle(R.string.list_of_cities)
+            actionBar.setDisplayHomeAsUpEnabled(false)
+            actionBar.setHomeButtonEnabled(false)
         }
     }
 
     override fun showCityList(cityList: List<City>) {
         binding.rvCityList.adapter = adapter
         setAnimSharedTransition()
-        adapter.onCityFavoriteButtonClickListener = { city: City ->
-            cityListPresenter.onFavoriteClick(city)
-        }
+        setFavoriteButtonListener()
         updateCityList(cityList)
+    }
+
+    private fun setFavoriteButtonListener() {
+        adapter.onCityFavoriteButtonClickListener = { city: City ->
+            cityListPresenter.onFavoriteClick(city, searchView.query.toString())
+        }
     }
 
     override fun updateCityList(cityList: List<City>) {
@@ -118,8 +125,7 @@ class CityListFragment : Fragment(), CityListContract.View {
 
     override fun showCityDetailInfo(city: City, extras: FragmentNavigator.Extras) {
         findNavController().navigate(
-            CityListFragmentDirections.actionCityListFragmentToCityDetailFragment(city),
-            extras
+            CityListFragmentDirections.actionCityListFragmentToCityDetailFragment(city), extras
         )
     }
 

@@ -14,7 +14,7 @@ interface CityListContract {
     interface Presenter {
         fun init()
         fun onCitySelected(city: City, view: android.view.View)
-        fun onFavoriteClick(city: City)
+        fun onFavoriteClick(city: City, query: String? = null)
         fun onFilterApply(query: String?)
     }
 }

@@ -11,12 +11,12 @@ import com.evgenii.sbercities.App
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.FragmentCityListFavoritesBinding
 import com.evgenii.sbercities.models.City
-import com.evgenii.sbercities.mvp.CityListFavoritesContract
+import com.evgenii.sbercities.mvp.CityListContract
 import com.evgenii.sbercities.presentation.citylist.CityListAdapter
 
-class CityListFavoritesFragment : Fragment(), CityListFavoritesContract.View {
+class CityListFavoritesFragment : Fragment(), CityListContract.View {
 
-    private lateinit var cityListPresenter: CityListFavoritesContract.Presenter
+    private lateinit var cityListPresenter: CityListContract.Presenter
 
     private val adapter by lazy {
         CityListAdapter(
@@ -78,11 +78,12 @@ class CityListFavoritesFragment : Fragment(), CityListFavoritesContract.View {
     }
 
     private fun setActionBar() {
-        val actionBar = (activity as AppCompatActivity).supportActionBar
-        actionBar?.let {
-            it.setTitle(R.string.favorites)
-            it.setDisplayHomeAsUpEnabled(true)
-            it.setHomeButtonEnabled(true)
+        val toolbar = binding.toolbarCityListFavorite.toolbar
+        (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        (activity as AppCompatActivity).supportActionBar?.let { actionBar ->
+            actionBar.setTitle(R.string.favorites)
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setHomeButtonEnabled(true)
         }
     }
 
@@ -97,6 +98,11 @@ class CityListFavoritesFragment : Fragment(), CityListFavoritesContract.View {
 
     override fun updateCityList(cityList: List<City>) {
         adapter.submitList(cityList)
+        if (cityList.isEmpty()) {
+            binding.rvCityList.visibility = View.GONE
+        } else {
+            binding.rvCityList.visibility = View.VISIBLE
+        }
     }
 
     private fun setAnimSharedTransition() {

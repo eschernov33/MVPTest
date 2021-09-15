@@ -6,7 +6,7 @@ import com.evgenii.sbercities.data.CityListRepositoryImpl
 import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityListContract
 
-class CityListPresenter(
+open class CityListPresenter(
     private val citiesListView: CityListContract.View,
     private val repository: CityListRepositoryImpl,
 ) : CityListContract.Presenter {
@@ -20,10 +20,10 @@ class CityListPresenter(
         citiesListView.showCityDetailInfo(city, extras)
     }
 
-    override fun onFavoriteClick(city: City) {
-        val cityUpdate = city.copy(isFavorite = !city.isFavorite)
-        repository.updateCity(cityUpdate)
-        citiesListView.updateCityList(repository.getCities())
+    override fun onFavoriteClick(city: City, query: String?) {
+        city.isFavorite = !city.isFavorite
+        repository.updateCity(city)
+        citiesListView.updateCityList(repository.getCities(query))
     }
 
     override fun onFilterApply(query: String?) {
