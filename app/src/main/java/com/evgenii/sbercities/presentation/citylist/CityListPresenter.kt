@@ -2,13 +2,13 @@ package com.evgenii.sbercities.presentation.citylist
 
 import android.view.View
 import androidx.navigation.fragment.FragmentNavigatorExtras
-import com.evgenii.sbercities.data.CityListRepositoryImpl
+import com.evgenii.sbercities.data.CityListRepository
 import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityListContract
 
 open class CityListPresenter(
     private val citiesListView: CityListContract.View,
-    private val repository: CityListRepositoryImpl,
+    private val repository: CityListRepository,
 ) : CityListContract.Presenter {
 
     override fun init() {

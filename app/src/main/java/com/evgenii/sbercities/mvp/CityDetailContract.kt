@@ -9,9 +9,9 @@ interface CityDetailContract {
         fun setHeaderImage(@DrawableRes resId: Int)
         fun setCityName(cityName: String)
         fun setCountryName(countryName: String)
-        fun setPopulation(population: String)
-        fun setSquare(square: String)
-        fun setAltitude(altitude: String)
+        fun setPopulation(population: Int)
+        fun setSquare(square: Int)
+        fun setAltitude(altitude: Int)
         fun setDescription(description: String)
         fun setFavoriteButton(isFavorite: Boolean)
     }

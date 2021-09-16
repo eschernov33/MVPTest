@@ -68,7 +68,7 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     private fun initPresenter() {
         val app = requireContext().applicationContext as App
-        presenter = CityDetailPresenter(this, requireContext(), app.repository)
+        presenter = CityDetailPresenter(this, app.repository)
         presenter.init(city)
     }
 
@@ -89,16 +89,26 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
         binding.tvCountryName.text = countryName
     }
 
-    override fun setPopulation(population: String) {
-        binding.tvPopulation.text = population
+    override fun setPopulation(population: Int) {
+        binding.tvPopulation.text = resources.getQuantityString(
+            R.plurals.population_field,
+            population,
+            population
+        )
     }
 
-    override fun setSquare(square: String) {
-        binding.tvSquare.text = square
+    override fun setSquare(square: Int) {
+        binding.tvSquare.text = resources.getString(R.string.square_field, square)
     }
 
-    override fun setAltitude(altitude: String) {
-        binding.tvAltitude.text = altitude
+    override fun setAltitude(altitude: Int) {
+        when (altitude) {
+            City.NO_DATA -> binding.tvAltitude.setText(R.string.no_data)
+            else -> {
+                binding.tvAltitude.text =
+                    resources.getString(R.string.altitude_field, altitude)
+            }
+        }
     }
 
     override fun setDescription(description: String) {

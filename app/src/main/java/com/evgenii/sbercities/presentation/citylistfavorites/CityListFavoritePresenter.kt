@@ -1,13 +1,13 @@
 package com.evgenii.sbercities.presentation.citylistfavorites
 
-import com.evgenii.sbercities.data.CityListRepositoryImpl
+import com.evgenii.sbercities.data.CityListRepository
 import com.evgenii.sbercities.models.City
 import com.evgenii.sbercities.mvp.CityListContract
 import com.evgenii.sbercities.presentation.citylist.CityListPresenter
 
 class CityListFavoritePresenter(
     private val citiesListView: CityListContract.View,
-    private val repository: CityListRepositoryImpl,
+    private val repository: CityListRepository,
 ) : CityListPresenter(citiesListView, repository) {
 
     override fun init() {

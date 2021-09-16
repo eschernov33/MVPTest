@@ -14,7 +14,6 @@
         <item name="scrimToolbarTitleCenter">@color/white_translucent_70</item>
         <item name="scrimToolbarTitleEnd">@android:color/transparent</item>
         <item name="cityDetailContentBackground">?attr/colorPrimary</item>
-        <item name="android:background">?attr/mainBackgroundColor</item>
     </style>
 
     <style name="TextView">
