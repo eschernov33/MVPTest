@@ -3,8 +3,9 @@
 > Тестовое приложение на основе MVP паттерна, с использованием fragments, navigation component,
 > recyclerview, sharedanimation, coordinatorlayout, daynight themes, junit4 и прочее
 
-<div>
-    <img src="https://user-images.githubusercontent.com/61781958/133679474-d4a9e891-83bc-45e9-a99d-400e3dbfb4ff.jpg" width="400px"</img> 
+<div style="text-align:center">
+    <img src="https://user-images.githubusercontent.com/61781958/133679474-d4a9e891-83bc-45e9-a99d-400e3dbfb4ff.jpg" height="350px"</img>
+    <img src="https://user-images.githubusercontent.com/61781958/133738637-97ff5295-c276-4f77-960c-e1c4ab907a27.png" height="350px"</img>
 </div>
 
 ## Базовый функционал
@@ -46,12 +47,3 @@
 - Добавить общий style для textview
 - Аннотации для ресурсов в аргументах функций
 - Ночной режим - доработать стили
-
-```mermaid
-graph LR
-    A(City List) --> B(Detail)
-    A --> C(Favorite)
-    B --> A
-    C --> B
-    C --> A
-```
