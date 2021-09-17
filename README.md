@@ -1,7 +1,7 @@
 # CityList (MVP)
 
 > Тестовое приложение на основе MVP паттерна, с использованием fragments, navigation component,
-> recyclerview, sharedanimation, coordinatorlayout, daynight themes, juhnit4 и прочее
+> recyclerview, sharedanimation, coordinatorlayout, daynight themes, junit4 и прочее
 
 <div>
     <img src="https://user-images.githubusercontent.com/61781958/133679474-d4a9e891-83bc-45e9-a99d-400e3dbfb4ff.jpg" width="400px"</img> 
