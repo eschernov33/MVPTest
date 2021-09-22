@@ -1,7 +1,7 @@
 package com.evgenii.sbercities
 
 import android.app.Application
-import com.evgenii.sbercities.data.CityListRepositoryImpl
+import com.evgenii.sbercities.data.repository.CityListRepositoryImpl
 
 class App : Application() {
 

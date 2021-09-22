@@ -2,10 +2,12 @@
 <resources>
     <attr name="toolbarBackground" format="reference" />
     <attr name="cardCityBackground" format="reference" />
-    <attr name="mainBackgroundColor" format="reference" />
     <attr name="cityDetailContentBackground" format="reference" />
     <attr name="cityDetailBackgroundColor" format="reference" />
     <attr name="scrimToolbarTitleStart" format="reference" />
     <attr name="scrimToolbarTitleCenter" format="reference" />
     <attr name="scrimToolbarTitleEnd" format="reference" />
+    <attr name="icLauncherBackground" format="reference" />
+    <attr name="mainTextColor" format="reference" />
+    <attr name="iconColorDark" format="reference" />
 </resources>

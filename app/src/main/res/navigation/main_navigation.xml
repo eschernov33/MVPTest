@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/cityListFragment"
-        android:name="com.evgenii.sbercities.presentation.citylist.CityListFragment"
+        android:name="com.evgenii.sbercities.presentation.fragments.CityListFragment"
         android:label="CityListFragment">
         <action
             android:id="@+id/action_cityListFragment_to_cityDetailFragment"
@@ -21,11 +21,11 @@
     </fragment>
     <fragment
         android:id="@+id/cityDetailFragment"
-        android:name="com.evgenii.sbercities.presentation.citydetail.CityDetailFragment"
+        android:name="com.evgenii.sbercities.presentation.fragments.CityDetailFragment"
         android:label="CityDetailFragment">
         <argument
             android:name="city"
-            app:argType="com.evgenii.sbercities.models.City" />
+            app:argType="integer" />
         <action
             android:id="@+id/action_cityDetailFragment_to_cityListFragment"
             app:enterAnim="@anim/slide_in_right"
@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/cityListFavoritesFragment"
-        android:name="com.evgenii.sbercities.presentation.citylistfavorites.CityListFavoritesFragment"
+        android:name="com.evgenii.sbercities.presentation.fragments.CityListFavoriteFragment"
         android:label="CityListFavoritesFragment">
         <action
             android:id="@+id/action_cityListFavoritesFragment_to_cityDetailFragment"

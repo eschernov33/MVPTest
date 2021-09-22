@@ -55,12 +55,12 @@
     <string name="altitude_title">Высота над уровнем моря:</string>
     <string name="no_data">Нет данных</string>
     <plurals name="population_field">
-        <item quantity="one">%d человек</item>
-        <item quantity="other">%d человек</item>
-        <item quantity="few">%d человек</item>
-        <item quantity="many">%d человек</item>
+        <item quantity="one">%d чел</item>
+        <item quantity="other">%d чел</item>
+        <item quantity="few">%d чел</item>
+        <item quantity="many">%d чел</item>
     </plurals>
-    <string name="square_field">%d кв. км.</string>
+    <string name="square_field">%d км²</string>
     <string name="altitude_field">%d м</string>
     <string name="content_description_city_img">Фотография города</string>
     <string name="favorites">Избранное</string>

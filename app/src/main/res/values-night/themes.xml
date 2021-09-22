@@ -10,10 +10,12 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="toolbarBackground">@color/gray_700</item>
         <item name="cardCityBackground">@color/black</item>
-        <item name="mainBackgroundColor">@color/gray_500</item>
+        <item name="android:colorBackground">@color/gray_500</item>
         <item name="cityDetailBackgroundColor">@color/gray_500</item>
         <item name="scrimToolbarTitleStart">@color/gray_500</item>
-        <item name="scrimToolbarTitleCenter">@color/gray_500_translucent_70</item>
+        <item name="scrimToolbarTitleCenter">@color/gray_500_70</item>
         <item name="cityDetailContentBackground">@color/gray_700</item>
+        <item name="mainTextColor">@color/white</item>
+        <item name="iconColorDark">@color/white</item>
     </style>
 </resources>

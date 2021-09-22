@@ -8,55 +8,60 @@
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="toolbarBackground">@color/purple_700</item>
         <item name="cardCityBackground">@color/white</item>
-        <item name="mainBackgroundColor">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
         <item name="cityDetailBackgroundColor">@color/white</item>
         <item name="scrimToolbarTitleStart">@color/white</item>
-        <item name="scrimToolbarTitleCenter">@color/white_translucent_70</item>
+        <item name="scrimToolbarTitleCenter">@color/white_70</item>
         <item name="scrimToolbarTitleEnd">@android:color/transparent</item>
         <item name="cityDetailContentBackground">?attr/colorPrimary</item>
+        <item name="icLauncherBackground">@color/green</item>
+        <item name="mainTextColor">@color/gray_700</item>
+        <item name="iconColorDark">@color/black</item>
     </style>
 
-    <style name="TextView">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-    </style>
+    <style name="Text" />
 
-    <style name="TextView.Primary">
-        <item name="android:textColor">@color/main_text_color</item>
+    <style name="Text.Primary">
+        <item name="android:textColor">?attr/mainTextColor</item>
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="TextView.Primary.Header">
+    <style name="Text.Primary.Medium">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Primary.Large">
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="TextView.Primary.Title">
-        <item name="android:textSize">14sp</item>
-    </style>
+    <style name="Text.Secondary" />
 
-    <style name="TextView.Secondary">
-        <item name="android:textColor">@color/main_text_color</item>
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="TextView.Secondary.Color">
-        <item name="android:textColor">?attr/colorSecondary</item>
-    </style>
-
-    <style name="TextView.Secondary.White">
+    <style name="Text.Secondary.White">
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="TextView.Primary.White">
-        <item name="android:textColor">@color/white</item>
+    <style name="Text.Secondary.Black">
+        <item name="android:textColor">?attr/mainTextColor</item>
     </style>
 
-    <style name="TextView.Primary.White.Big">
-        <item name="android:textSize">36sp</item>
+    <style name="Text.Secondary.White.Small">
+        <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextView.Primary.White.Title">
+    <style name="Text.Secondary.Black.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Text.Secondary.White.Medium">
         <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Secondary.White.Large">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Text.Secondary.White.Big">
+        <item name="android:textSize">36sp</item>
     </style>
 
     <style name="RoundedImageViewRounded" parent="Theme.MaterialComponents.DayNight.NoActionBar">
