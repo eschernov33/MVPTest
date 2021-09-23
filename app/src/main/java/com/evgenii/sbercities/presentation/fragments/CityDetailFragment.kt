@@ -12,8 +12,10 @@ import androidx.transition.TransitionInflater
 import com.evgenii.sbercities.App
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.FragmentCityDetailBinding
+import com.evgenii.sbercities.domain.usecases.CityUseCase
 import com.evgenii.sbercities.presentation.contracts.CityDetailContract
-import com.evgenii.sbercities.presentation.model.CityView
+import com.evgenii.sbercities.presentation.mapper.CityMapper
+import com.evgenii.sbercities.presentation.model.CityParam
 import com.evgenii.sbercities.presentation.presenters.CityDetailPresenter
 import com.evgenii.sbercities.presentation.utils.AnimationUtils
 
@@ -22,8 +24,6 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
     private val args by navArgs<CityDetailFragmentArgs>()
 
     private val cityId by lazy { args.city }
-
-    private val navController by lazy { findNavController() }
 
     private lateinit var presenter: CityDetailContract.Presenter
 
@@ -49,13 +49,14 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     private fun initPresenter() {
         val app = requireContext().applicationContext as App
-        presenter = CityDetailPresenter(this, app.repository, requireContext())
+        val cityUseCase = CityUseCase(app.repository)
+        presenter = CityDetailPresenter(this, CityMapper, cityUseCase)
         presenter.init(cityId)
     }
 
     private fun setFavoriteButtonListener() {
         binding.fabFavorite.setOnClickListener {
-            presenter.onFavoriteClick(cityId)
+            presenter.onFavoriteClick()
         }
     }
 
@@ -68,23 +69,27 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
         )
     }
 
-    override fun setActionBar(title: String) {
+    override fun setToolbar(title: String) {
         val toolbar = binding.toolbarCityDetail
         toolbar.title = title
         toolbar.setNavigationIcon(R.drawable.ic_back_button_dark)
         toolbar.setNavigationOnClickListener {
-            presenter.onActionBarBackButtonPressed(navController)
+            presenter.onActionBarBackButtonPressed()
         }
     }
 
-    override fun setCityValues(city: CityView) {
+    override fun setCityValues(city: CityParam) {
         with(binding) {
             imgCity.setImageResource(city.imgCityCardResId)
             tvCityName.text = city.cityName
             tvCountryName.text = city.countryName
-            tvPopulation.text = city.population
-            tvSquare.text = city.square
-            tvAltitude.text = city.altitude
+            tvPopulation.text = resources.getQuantityString(
+                R.plurals.population_field,
+                city.population,
+                city.population)
+            tvSquare.text = resources.getString(
+                R.string.square_field, city.square)
+            tvAltitude.text = resources.getString(R.string.altitude_field, city.altitude)
             tvDescription.text = city.description
             fabFavorite.setImageResource(city.favoriteImg)
         }
@@ -92,5 +97,9 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
 
     override fun setFavoriteButton(imgRes: Int) {
         binding.fabFavorite.setImageResource(imgRes)
+    }
+
+    override fun navigateToBackScreen() {
+        findNavController().popBackStack()
     }
 }

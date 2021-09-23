@@ -6,14 +6,8 @@ class City(
     val countryName: String,
     val population: Int,
     val square: Int,
-    val description: String = NO_DESCRIPTION,
-    val altitude: Int = NO_DATA,
+    val description: String,
+    val altitude: Int,
     val cityType: CityType,
     var isFavorite: Boolean = false,
-) {
-
-    companion object {
-        const val NO_DATA = -1
-        const val NO_DESCRIPTION = ""
-    }
-}
+)

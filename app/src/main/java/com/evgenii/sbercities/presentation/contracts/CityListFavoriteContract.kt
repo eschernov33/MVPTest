@@ -1,10 +1,12 @@
 package com.evgenii.sbercities.presentation.contracts
 
-import androidx.navigation.NavController
-
 interface CityListFavoriteContract {
 
+    interface View : CityListBaseContract.View {
+        fun navigateToBackScreen()
+    }
+
     interface Presenter : CityListBaseContract.Presenter {
-        fun onActionBarBackButtonPressed(navController: NavController)
+        fun onActionBarBackButtonPressed()
     }
 }

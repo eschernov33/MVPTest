@@ -1,38 +1,39 @@
 package com.evgenii.sbercities.presentation.presenters
 
-import android.content.Context
-import androidx.navigation.NavController
-import com.evgenii.sbercities.data.repository.CityListRepository
 import com.evgenii.sbercities.domain.usecases.CityUseCase
 import com.evgenii.sbercities.presentation.contracts.CityDetailContract
 import com.evgenii.sbercities.presentation.mapper.CityMapper
 
 class CityDetailPresenter(
-    private val view: CityDetailContract.View,
-    repository: CityListRepository,
-    context: Context?,
+    private val cityDetailView: CityDetailContract.View,
+    private val mapper: CityMapper,
+    private val cityUseCase: CityUseCase,
 ) : CityDetailContract.Presenter {
 
-    private val cityUseCase = CityUseCase(repository)
-    private val mapper = CityMapper(context)
+    private var cityId = CITY_ID_NOT_INIT
 
     override fun init(cityId: Int) {
+        this.cityId = cityId
         val city = cityUseCase.getCityById(cityId)
         val cityView = mapper.mapFromEntity(city)
-        view.setCityValues(cityView)
-        view.setActionBar(cityView.cityName)
+        cityDetailView.setCityValues(cityView)
+        cityDetailView.setToolbar(cityView.cityName)
     }
 
-    override fun onFavoriteClick(cityId: Int) {
+    override fun onFavoriteClick() {
         val city = cityUseCase.getCityById(cityId)
         city.isFavorite = !city.isFavorite
         cityUseCase.updateCity(city)
         val updatedCity = cityUseCase.getCityById(city.cityId)
         val updatedCityView = mapper.mapFromEntity(updatedCity)
-        view.setFavoriteButton(updatedCityView.favoriteImg)
+        cityDetailView.setFavoriteButton(updatedCityView.favoriteImg)
     }
 
-    override fun onActionBarBackButtonPressed(navController: NavController) {
-        navController.popBackStack()
+    override fun onActionBarBackButtonPressed() {
+        cityDetailView.navigateToBackScreen()
+    }
+
+    companion object {
+        const val CITY_ID_NOT_INIT = -1
     }
 }

@@ -1,15 +1,15 @@
 package com.evgenii.sbercities.presentation.presenters
 
-import androidx.navigation.NavController
 import androidx.navigation.fragment.FragmentNavigator
 import com.evgenii.sbercities.R
-import com.evgenii.sbercities.data.repository.CityListRepository
 import com.evgenii.sbercities.domain.model.City
 import com.evgenii.sbercities.domain.model.CityType
-import com.evgenii.sbercities.presentation.contracts.CityListBaseContract
+import com.evgenii.sbercities.domain.repository.CityListRepository
+import com.evgenii.sbercities.domain.usecases.CityUseCase
 import com.evgenii.sbercities.presentation.contracts.CityListContract
-import com.evgenii.sbercities.presentation.fragments.CityListFragmentDirections
-import com.evgenii.sbercities.presentation.model.CityView
+import com.evgenii.sbercities.presentation.mapper.CityMapper
+import com.evgenii.sbercities.presentation.model.CityParam
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mockito.mock
@@ -18,12 +18,12 @@ import org.mockito.kotlin.whenever
 
 class CityListPresenterTest {
 
-    private lateinit var cityListView: CityListBaseContract.View
-    private lateinit var repository: CityListRepository
     private lateinit var presenter: CityListContract.Presenter
-
     private val extras: FragmentNavigator.Extras = mock(FragmentNavigator.Extras::class.java)
-    private val navController: NavController = mock(NavController::class.java)
+    private val cityListView = mock(CityListContract.View::class.java)
+    private val repository = mock(CityListRepository::class.java)
+    private val mapper = CityMapper
+    private val cityUseCase = CityUseCase(repository)
 
     private val cityList = listOf(
         City(
@@ -51,37 +51,35 @@ class CityListPresenterTest {
     )
 
     private val cityViewList = listOf(
-        CityView(
+        CityParam(
             CITY_MOSCOW_ID,
             CITY_MOSCOW_NAME,
             CITY_MOSCOW_COUNTRY_NAME,
-            "",
-            "",
+            CITY_MOSCOW_POPULATION,
+            CITY_MOSCOW_SQUARE,
             R.drawable.flag_msc,
             R.drawable.city_moscow,
             CITY_MOSCOW_DESCRIPTION,
-            "",
+            CITY_MOSCOW_ALTITUDE,
             R.drawable.ic_favorite_disable
         ),
-        CityView(
+        CityParam(
             CITY_MADRID_ID,
             CITY_MADRID_NAME,
             CITY_MADRID_COUNTRY_NAME,
-            "",
-            "",
+            CITY_MADRID_POPULATION,
+            CITY_MADRID_SQUARE,
             R.drawable.flag_madrid,
             R.drawable.city_madrid,
             CITY_MADRID_DESCRIPTION,
-            "",
+            CITY_MADRID_ALTITUDE,
             R.drawable.ic_favorite_disable
         )
     )
 
     @Before
     fun setUp() {
-        cityListView = mock(CityListBaseContract.View::class.java)
-        repository = mock(CityListRepository::class.java)
-        presenter = CityListPresenter(cityListView, repository, null)
+        presenter = CityListPresenter(cityListView, mapper, cityUseCase)
         setRepositoryAnswers()
     }
 
@@ -92,6 +90,12 @@ class CityListPresenterTest {
         whenever(repository.getCityById(CityDetailPresenterTest.CITY_ID)).thenAnswer {
             cityList.find { it.cityId == CITY_MOSCOW_ID }
         }
+    }
+
+    @Test
+    fun `test usecase when get city by id then get city moscow`() {
+        val cityResult = cityUseCase.getCityById(CITY_MOSCOW_ID)
+        Assert.assertEquals(cityResult, cityList.find { city -> city.cityId == CITY_MOSCOW_ID })
     }
 
     @Test
@@ -130,17 +134,15 @@ class CityListPresenterTest {
     }
 
     @Test
-    fun `test open detail when click on city item then navigate to detail`() {
-        presenter.onCitySelected(CITY_MOSCOW_ID, extras, navController)
-        verify(navController).navigate(CityListFragmentDirections
-            .actionCityListFragmentToCityDetailFragment(CITY_MOSCOW_ID), extras)
+    fun `test navigate to detail when click on city item then navigate to detail`() {
+        presenter.onCitySelected(CITY_MOSCOW_ID, extras)
+        verify(cityListView).navigateToCityDetail(CITY_MOSCOW_ID, extras)
     }
 
     @Test
     fun `test open favorites when click on favorite button then navigate to favorites`() {
-        presenter.onClickButtonToFavoritesScreen(navController)
-        verify(navController).navigate(CityListFragmentDirections
-            .actionCityListFragmentToCityListFavoritesFragment())
+        presenter.onClickButtonToFavoritesScreen()
+        verify(cityListView).navigateToFavoritesScreen()
     }
 
     companion object {

@@ -1,20 +1,20 @@
 package com.evgenii.sbercities.presentation.contracts
 
 import androidx.annotation.DrawableRes
-import androidx.navigation.NavController
-import com.evgenii.sbercities.presentation.model.CityView
+import com.evgenii.sbercities.presentation.model.CityParam
 
 interface CityDetailContract {
 
     interface View {
-        fun setCityValues(city: CityView)
+        fun setCityValues(city: CityParam)
         fun setFavoriteButton(@DrawableRes imgRes: Int)
-        fun setActionBar(title: String)
+        fun setToolbar(title: String)
+        fun navigateToBackScreen()
     }
 
     interface Presenter {
         fun init(cityId: Int)
-        fun onFavoriteClick(cityId: Int)
-        fun onActionBarBackButtonPressed(navController: NavController)
+        fun onFavoriteClick()
+        fun onActionBarBackButtonPressed()
     }
 }

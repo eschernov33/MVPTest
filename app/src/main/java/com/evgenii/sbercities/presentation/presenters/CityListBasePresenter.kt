@@ -1,19 +1,16 @@
 package com.evgenii.sbercities.presentation.presenters
 
-import android.content.Context
-import com.evgenii.sbercities.data.repository.CityListRepository
 import com.evgenii.sbercities.domain.usecases.CityUseCase
 import com.evgenii.sbercities.presentation.contracts.CityListBaseContract
 import com.evgenii.sbercities.presentation.mapper.CityMapper
 
 abstract class CityListBasePresenter(
     citiesListView: CityListBaseContract.View,
-    repository: CityListRepository,
-    context: Context?,
+    mapper: CityMapper,
+    private val cityUseCase: CityUseCase,
 ) : CityListBaseContract.Presenter {
 
-    private val cityUseCase = CityUseCase(repository)
-    private val mapper = CityMapper(context)
+    protected var query: String = EMPTY_QUERY
 
     init {
         val cityList = cityUseCase.getCities()
@@ -21,16 +18,21 @@ abstract class CityListBasePresenter(
         citiesListView.showCityList(cityListView)
     }
 
-    override fun onFavoriteClick(cityId: Int, query: String) {
+    override fun onFavoriteClick(cityId: Int) {
         val city = cityUseCase.getCityById(cityId)
         city.isFavorite = !city.isFavorite
         cityUseCase.updateCity(city)
-        updateCityList(query)
+        updateCityList()
     }
 
     override fun onFilterApply(query: String) {
-        updateCityList(query)
+        this.query = query
+        updateCityList()
     }
 
-    abstract fun updateCityList(query: String)
+    abstract fun updateCityList()
+
+    companion object {
+        const val EMPTY_QUERY = ""
+    }
 }

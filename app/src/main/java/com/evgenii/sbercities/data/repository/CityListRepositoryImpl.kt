@@ -4,6 +4,7 @@ import android.content.Context
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.domain.model.City
 import com.evgenii.sbercities.domain.model.CityType
+import com.evgenii.sbercities.domain.repository.CityListRepository
 
 class CityListRepositoryImpl(private val context: Context) : CityListRepository {
 

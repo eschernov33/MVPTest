@@ -65,9 +65,9 @@
                 android:id="@+id/tvCountryName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Secondary.White.Big"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
+                android:textAppearance="@style/TextSecondaryHeadline4"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -78,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textAppearance="@style/Text.Secondary.White.Medium"
+                android:textAppearance="@style/TextSecondaryBody1"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvCountryName"
@@ -88,25 +88,23 @@
                 android:id="@+id/glBegin"
                 android:layout_width="1dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="10dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_begin="10dp" />
+                app:layout_constraintGuide_begin="18dp" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/glEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:orientation="vertical"
-                app:layout_constraintGuide_end="10dp" />
+                app:layout_constraintGuide_end="18dp" />
 
             <TextView
                 android:id="@+id/tvPopulationTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Secondary.White.Medium"
                 android:layout_marginTop="10dp"
                 android:text="@string/population_title"
+                android:textAppearance="@style/TextSecondaryBody1"
                 app:layout_constraintStart_toStartOf="@id/glBegin"
                 app:layout_constraintTop_toBottomOf="@id/tvCityName" />
 
@@ -114,8 +112,8 @@
                 android:id="@+id/tvPopulation"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Secondary.White.Small"
                 android:layout_marginHorizontal="6dp"
+                android:textAppearance="@style/TextSecondaryBody2"
                 app:layout_constraintBottom_toBottomOf="@id/tvPopulationTitle"
                 app:layout_constraintStart_toEndOf="@id/tvPopulationTitle"
                 app:layout_constraintTop_toTopOf="@id/tvPopulationTitle"
@@ -125,9 +123,9 @@
                 android:id="@+id/tvSquareTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Secondary.White.Medium"
                 android:layout_marginTop="8dp"
                 android:text="@string/square_title"
+                android:textAppearance="@style/TextSecondaryBody1"
                 app:layout_constraintStart_toStartOf="@id/glBegin"
                 app:layout_constraintTop_toBottomOf="@id/tvPopulationTitle" />
 
@@ -135,8 +133,8 @@
                 android:id="@+id/tvSquare"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Secondary.White.Small"
                 android:layout_marginHorizontal="6dp"
+                android:textAppearance="@style/TextSecondaryBody2"
                 app:layout_constraintBottom_toBottomOf="@id/tvSquareTitle"
                 app:layout_constraintStart_toEndOf="@id/tvSquareTitle"
                 app:layout_constraintTop_toTopOf="@id/tvSquareTitle"
@@ -146,9 +144,9 @@
                 android:id="@+id/tvAltitudeTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Secondary.White.Medium"
                 android:layout_marginTop="8dp"
                 android:text="@string/altitude_title"
+                android:textAppearance="@style/TextSecondaryBody1"
                 app:layout_constraintStart_toStartOf="@id/glBegin"
                 app:layout_constraintTop_toBottomOf="@id/tvSquareTitle" />
 
@@ -156,8 +154,8 @@
                 android:id="@+id/tvAltitude"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/Text.Secondary.White.Small"
                 android:layout_marginHorizontal="6dp"
+                android:textAppearance="@style/TextSecondaryBody2"
                 app:layout_constraintBottom_toBottomOf="@id/tvAltitudeTitle"
                 app:layout_constraintStart_toEndOf="@id/tvAltitudeTitle"
                 app:layout_constraintTop_toTopOf="@id/tvAltitudeTitle"
@@ -166,11 +164,10 @@
 
             <TextView
                 android:id="@+id/tvDescription"
-                android:textAppearance="@style/Text.Secondary.White.Large"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:gravity="fill_horizontal"
+                android:textAppearance="@style/TextSecondaryBody1"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@id/glEnd"
                 app:layout_constraintStart_toStartOf="@id/glBegin"

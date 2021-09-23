@@ -1,4 +1,4 @@
-package com.evgenii.sbercities.data.repository
+package com.evgenii.sbercities.domain.repository
 
 import com.evgenii.sbercities.domain.model.City
 

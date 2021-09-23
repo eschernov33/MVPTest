@@ -55,7 +55,6 @@
     <string name="population_title">Population:</string>
     <string name="square_title">Square:</string>
     <string name="altitude_title">Altitude:</string>
-    <string name="no_data">No data</string>
     <plurals name="population_field">
         <item quantity="one">%d person</item>
         <item quantity="other">%d people</item>
