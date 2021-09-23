@@ -1,15 +1,15 @@
 package com.evgenii.sbercities.presentation.adapters
 
 import androidx.recyclerview.widget.DiffUtil
-import com.evgenii.sbercities.presentation.model.CityView
+import com.evgenii.sbercities.presentation.model.CityParam
 
-class CityItemDiffCallback : DiffUtil.ItemCallback<CityView>() {
+class CityItemDiffCallback : DiffUtil.ItemCallback<CityParam>() {
 
-    override fun areItemsTheSame(oldItem: CityView, newItem: CityView): Boolean {
+    override fun areItemsTheSame(oldItem: CityParam, newItem: CityParam): Boolean {
         return oldItem.cityId == newItem.cityId
     }
 
-    override fun areContentsTheSame(oldItem: CityView, newItem: CityView): Boolean {
+    override fun areContentsTheSame(oldItem: CityParam, newItem: CityParam): Boolean {
         return oldItem == newItem
     }
 }

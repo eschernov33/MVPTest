@@ -17,39 +17,34 @@ import com.evgenii.sbercities.R
 import com.evgenii.sbercities.data.repository.CityListRepositoryImpl
 import com.evgenii.sbercities.presentation.adapters.CityListAdapter
 import com.evgenii.sbercities.presentation.contracts.CityListBaseContract
-import com.evgenii.sbercities.presentation.model.CityView
-import com.evgenii.sbercities.presentation.utils.AnimationUtils
+import com.evgenii.sbercities.presentation.model.CityParam
 
-abstract class CityListBaseFragment<VB : ViewBinding>(
+abstract class CityListBaseFragment<VB : ViewBinding, PRESENTER : CityListBaseContract.Presenter>(
     private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB,
 ) : Fragment(), CityListBaseContract.View {
 
-    lateinit var presenter: CityListBaseContract.Presenter
+    protected lateinit var presenter: PRESENTER
 
-    private var filterQuery: String = EMPTY
+    protected val navController by lazy { findNavController() }
 
-    val navController by lazy { findNavController() }
+    private val preDrawListener = {
+        startPostponedEnterTransition()
+        true
+    }
 
     private val adapter by lazy {
-        CityListAdapter({ city, view ->
-            presenter.onCitySelected(
-                city.cityId,
-                getTransitionExtras(
-                    view,
-                    AnimationUtils.getUniqueTransitionName(city.cityId)
-                ),
-                navController
-            )
+        CityListAdapter({ city, extras ->
+            presenter.onCitySelected(city.cityId, extras)
         })
-        { city -> presenter.onFavoriteClick(city.cityId, filterQuery) }
+        { city -> presenter.onFavoriteClick(city.cityId) }
     }
 
     private var _binding: VB? = null
     val binding: VB
-        get() = _binding ?: throw RuntimeException("FragmentCityListBinding == null")
+        get() = _binding ?: throw RuntimeException("FragmentCityListBinding is null")
 
     abstract fun initCityListAdapter(adapter: CityListAdapter)
-    abstract fun getPresenter(repository: CityListRepositoryImpl): CityListBaseContract.Presenter
+    abstract fun getPresenter(repository: CityListRepositoryImpl): PRESENTER
     abstract fun getCityListView(): RecyclerView
     abstract fun getToolbar(): Toolbar
 
@@ -68,6 +63,27 @@ abstract class CityListBaseFragment<VB : ViewBinding>(
         initPresenter()
     }
 
+    override fun showCityList(cityList: List<CityParam>) {
+        initCityListAdapter(adapter)
+        setAnimSharedTransition()
+        updateCityList(cityList)
+    }
+
+    override fun updateCityList(cityList: List<CityParam>) =
+        adapter.submitList(cityList)
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        getCityListView().viewTreeObserver.removeOnPreDrawListener(preDrawListener)
+        _binding = null
+    }
+
+    private fun initPresenter() {
+        val app = requireContext().applicationContext as App
+        val repository = app.repository
+        presenter = getPresenter(repository)
+    }
+
     private fun setActionBar() {
         val toolbar = getToolbar()
         initMenuSearchView(toolbar.menu)
@@ -78,13 +94,11 @@ abstract class CityListBaseFragment<VB : ViewBinding>(
         val searchView = menuItem.actionView as SearchView
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                filterQuery = query
                 presenter.onFilterApply(query)
                 return false
             }
 
             override fun onQueryTextChange(newText: String): Boolean {
-                filterQuery = newText
                 presenter.onFilterApply(newText)
                 return false
             }
@@ -94,36 +108,9 @@ abstract class CityListBaseFragment<VB : ViewBinding>(
     private fun getTransitionExtras(view: View, transitionId: String) =
         FragmentNavigatorExtras(view to transitionId)
 
-    private fun initPresenter() {
-        val app = requireContext().applicationContext as App
-        val repository = app.repository
-        presenter = getPresenter(repository)
-    }
-
-    override fun showCityList(cityList: List<CityView>) {
-        initCityListAdapter(adapter)
-        setAnimSharedTransition()
-        updateCityList(cityList)
-    }
-
-    override fun updateCityList(cityList: List<CityView>) =
-        adapter.submitList(cityList)
-
     private fun setAnimSharedTransition() {
         postponeEnterTransition()
         val rvCityList = getCityListView()
-        rvCityList.viewTreeObserver.addOnPreDrawListener {
-            startPostponedEnterTransition()
-            true
-        }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    companion object {
-        const val EMPTY = ""
+        rvCityList.viewTreeObserver.addOnPreDrawListener(preDrawListener)
     }
 }

@@ -1,7 +1,7 @@
 package com.evgenii.sbercities.domain.usecases
 
-import com.evgenii.sbercities.data.repository.CityListRepository
 import com.evgenii.sbercities.domain.model.City
+import com.evgenii.sbercities.domain.repository.CityListRepository
 
 class CityUseCase(private val repository: CityListRepository) {
 

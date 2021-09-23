@@ -7,7 +7,6 @@
         <item name="colorOnSecondary">@color/white</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
         <item name="toolbarBackground">@color/purple_700</item>
-        <item name="cardCityBackground">@color/white</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="cityDetailBackgroundColor">@color/white</item>
         <item name="scrimToolbarTitleStart">@color/white</item>
@@ -19,49 +18,16 @@
         <item name="iconColorDark">@color/black</item>
     </style>
 
-    <style name="Text" />
-
-    <style name="Text.Primary">
-        <item name="android:textColor">?attr/mainTextColor</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="Text.Primary.Medium">
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="Text.Primary.Large">
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="Text.Secondary" />
-
-    <style name="Text.Secondary.White">
+    <style name="TextSecondaryHeadline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="Text.Secondary.Black">
-        <item name="android:textColor">?attr/mainTextColor</item>
+    <style name="TextSecondaryBody1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/white</item>
     </style>
 
-    <style name="Text.Secondary.White.Small">
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="Text.Secondary.Black.Small">
-        <item name="android:textSize">14sp</item>
-    </style>
-
-    <style name="Text.Secondary.White.Medium">
-        <item name="android:textSize">16sp</item>
-    </style>
-
-    <style name="Text.Secondary.White.Large">
-        <item name="android:textSize">18sp</item>
-    </style>
-
-    <style name="Text.Secondary.White.Big">
-        <item name="android:textSize">36sp</item>
+    <style name="TextSecondaryBody2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/white</item>
     </style>
 
     <style name="RoundedImageViewRounded" parent="Theme.MaterialComponents.DayNight.NoActionBar">
