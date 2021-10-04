@@ -1,13 +1,13 @@
 package com.evgenii.sbercities.presentation.contracts
 
 import androidx.navigation.fragment.FragmentNavigator
-import com.evgenii.sbercities.presentation.model.CityParam
+import com.evgenii.sbercities.presentation.model.CityItem
 
 interface CityListBaseContract {
 
     interface View {
-        fun showCityList(cityList: List<CityParam>)
-        fun updateCityList(cityList: List<CityParam>)
+        fun showCityList(cityList: List<CityItem>)
+        fun updateCityList(cityList: List<CityItem>)
         fun navigateToCityDetail(cityId: Int, extras: FragmentNavigator.Extras)
     }
 

@@ -7,19 +7,21 @@ import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.recyclerview.widget.RecyclerView
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.ItemCityBinding
-import com.evgenii.sbercities.presentation.model.CityParam
+import com.evgenii.sbercities.presentation.model.CityItem
 import com.evgenii.sbercities.presentation.utils.AnimationUtils
 
 class CityListViewHolder(private val binding: ItemCityBinding) :
     RecyclerView.ViewHolder(binding.root) {
 
     fun bind(
-        city: CityParam,
-        onCityItemClicked: (city: CityParam, extras: FragmentNavigator.Extras) -> Unit,
-        onCityFavoriteClicked: (city: CityParam) -> Unit,
+        city: CityItem,
+        onCityItemClicked: (city: CityItem, extras: FragmentNavigator.Extras) -> Unit,
+        onCityFavoriteClicked: (city: CityItem) -> Unit,
     ) {
-        ViewCompat.setTransitionName(binding.ivCityCard,
-            AnimationUtils.getUniqueTransitionName(city.cityId))
+        ViewCompat.setTransitionName(
+            binding.ivCityCard,
+            AnimationUtils.getUniqueTransitionName(city.cityId)
+        )
         val context = binding.root.context
         val resources = context.resources
         with(binding) {
@@ -39,10 +41,12 @@ class CityListViewHolder(private val binding: ItemCityBinding) :
                 onCityFavoriteClicked(city)
             }
             root.setOnClickListener {
-                onCityItemClicked(city, getTransitionExtras(
-                    ivCityCard,
-                    AnimationUtils.getUniqueTransitionName(city.cityId)
-                ))
+                onCityItemClicked(
+                    city, getTransitionExtras(
+                        ivCityCard,
+                        AnimationUtils.getUniqueTransitionName(city.cityId)
+                    )
+                )
             }
         }
     }

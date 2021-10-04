@@ -19,7 +19,7 @@ class CityListRepositoryImpl(private val context: Context) : CityListRepository 
     override fun getCityById(cityId: Int): City =
         listCity.first { city -> city.cityId == cityId }
 
-    override fun getCities() =
+    override fun getCities(): List<City> =
         listCity.toList()
 
     override fun updateCity(updatedCity: City) {

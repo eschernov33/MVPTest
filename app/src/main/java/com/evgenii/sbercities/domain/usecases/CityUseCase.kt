@@ -5,7 +5,7 @@ import com.evgenii.sbercities.domain.repository.CityListRepository
 
 class CityUseCase(private val repository: CityListRepository) {
 
-    fun getCityById(cityId: Int) =
+    fun getCityById(cityId: Int): City =
         repository.getCityById(cityId)
 
     fun getCities(filterStroke: String = "", isFavorite: Boolean = false): List<City> {

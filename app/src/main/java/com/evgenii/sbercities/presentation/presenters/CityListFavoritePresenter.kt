@@ -7,9 +7,10 @@ import com.evgenii.sbercities.presentation.mapper.CityMapper
 
 class CityListFavoritePresenter(
     private val citiesListView: CityListFavoriteContract.View,
-    private val mapper: CityMapper,
     private val cityUseCase: CityUseCase,
-) : CityListBasePresenter(citiesListView, mapper, cityUseCase), CityListFavoriteContract.Presenter {
+) : CityListBasePresenter(cityUseCase), CityListFavoriteContract.Presenter {
+
+    private val mapper = CityMapper()
 
     init {
         val cityList = cityUseCase.getCities(isFavorite = true)

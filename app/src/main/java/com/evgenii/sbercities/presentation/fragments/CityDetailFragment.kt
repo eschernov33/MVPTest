@@ -14,8 +14,7 @@ import com.evgenii.sbercities.R
 import com.evgenii.sbercities.databinding.FragmentCityDetailBinding
 import com.evgenii.sbercities.domain.usecases.CityUseCase
 import com.evgenii.sbercities.presentation.contracts.CityDetailContract
-import com.evgenii.sbercities.presentation.mapper.CityMapper
-import com.evgenii.sbercities.presentation.model.CityParam
+import com.evgenii.sbercities.presentation.model.CityItem
 import com.evgenii.sbercities.presentation.presenters.CityDetailPresenter
 import com.evgenii.sbercities.presentation.utils.AnimationUtils
 
@@ -60,7 +59,7 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
         binding.fabFavorite.setImageResource(imgRes)
     }
 
-    override fun setCityValues(city: CityParam) {
+    override fun setCityValues(city: CityItem) {
         with(binding) {
             imgCity.setImageResource(city.imgCityCardResId)
             tvCityName.text = city.cityName
@@ -68,9 +67,11 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
             tvPopulation.text = resources.getQuantityString(
                 R.plurals.population_field,
                 city.population,
-                city.population)
+                city.population
+            )
             tvSquare.text = resources.getString(
-                R.string.square_field, city.square)
+                R.string.square_field, city.square
+            )
             tvAltitude.text = resources.getString(R.string.altitude_field, city.altitude)
             tvDescription.text = city.description
             fabFavorite.setImageResource(city.favoriteImg)
@@ -89,7 +90,7 @@ class CityDetailFragment : Fragment(), CityDetailContract.View {
     private fun initPresenter() {
         val app = requireContext().applicationContext as App
         val cityUseCase = CityUseCase(app.repository)
-        presenter = CityDetailPresenter(this, CityMapper, cityUseCase)
+        presenter = CityDetailPresenter(this, cityUseCase)
         presenter.init(cityId)
     }
 

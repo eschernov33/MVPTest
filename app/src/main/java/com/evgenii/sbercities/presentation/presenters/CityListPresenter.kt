@@ -7,9 +7,10 @@ import com.evgenii.sbercities.presentation.mapper.CityMapper
 
 class CityListPresenter(
     private val citiesListView: CityListContract.View,
-    private val mapper: CityMapper,
     private val cityUseCase: CityUseCase,
-) : CityListBasePresenter(citiesListView, mapper, cityUseCase), CityListContract.Presenter {
+) : CityListBasePresenter(cityUseCase), CityListContract.Presenter {
+
+    private val mapper = CityMapper()
 
     init {
         val cityList = cityUseCase.getCities()

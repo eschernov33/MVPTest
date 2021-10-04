@@ -9,7 +9,6 @@ import com.evgenii.sbercities.databinding.FragmentCityListBinding
 import com.evgenii.sbercities.domain.usecases.CityUseCase
 import com.evgenii.sbercities.presentation.adapters.CityListAdapter
 import com.evgenii.sbercities.presentation.contracts.CityListContract
-import com.evgenii.sbercities.presentation.mapper.CityMapper
 import com.evgenii.sbercities.presentation.presenters.CityListPresenter
 
 class CityListFragment :
@@ -18,7 +17,7 @@ class CityListFragment :
 
     override fun getPresenter(repository: CityListRepositoryImpl): CityListPresenter {
         val cityUseCase = CityUseCase(repository)
-        return CityListPresenter(this, CityMapper, cityUseCase)
+        return CityListPresenter(this, cityUseCase)
     }
 
     override fun getToolbar(): Toolbar {
@@ -45,12 +44,16 @@ class CityListFragment :
         binding.rvCityList
 
     override fun navigateToFavoritesScreen() {
-        navController.navigate(CityListFragmentDirections
-            .actionCityListFragmentToCityListFavoritesFragment())
+        navController.navigate(
+            CityListFragmentDirections
+                .actionCityListFragmentToCityListFavoritesFragment()
+        )
     }
 
     override fun navigateToCityDetail(cityId: Int, extras: FragmentNavigator.Extras) {
-        navController.navigate(CityListFragmentDirections
-            .actionCityListFragmentToCityDetailFragment(cityId), extras)
+        navController.navigate(
+            CityListFragmentDirections
+                .actionCityListFragmentToCityDetailFragment(cityId), extras
+        )
     }
 }

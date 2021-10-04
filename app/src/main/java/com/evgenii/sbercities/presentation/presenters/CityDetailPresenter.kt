@@ -6,10 +6,10 @@ import com.evgenii.sbercities.presentation.mapper.CityMapper
 
 class CityDetailPresenter(
     private val cityDetailView: CityDetailContract.View,
-    private val mapper: CityMapper,
     private val cityUseCase: CityUseCase,
 ) : CityDetailContract.Presenter {
 
+    private val mapper = CityMapper()
     private var cityId = CITY_ID_NOT_INIT
 
     override fun init(cityId: Int) {
@@ -34,6 +34,6 @@ class CityDetailPresenter(
     }
 
     companion object {
-        const val CITY_ID_NOT_INIT = -1
+        private const val CITY_ID_NOT_INIT = -1
     }
 }

@@ -10,8 +10,7 @@ import com.evgenii.sbercities.databinding.FragmentCityListFavoritesBinding
 import com.evgenii.sbercities.domain.usecases.CityUseCase
 import com.evgenii.sbercities.presentation.adapters.CityListAdapter
 import com.evgenii.sbercities.presentation.contracts.CityListFavoriteContract
-import com.evgenii.sbercities.presentation.mapper.CityMapper
-import com.evgenii.sbercities.presentation.model.CityParam
+import com.evgenii.sbercities.presentation.model.CityItem
 import com.evgenii.sbercities.presentation.presenters.CityListFavoritePresenter
 
 class CityListFavoriteFragment :
@@ -20,7 +19,7 @@ class CityListFavoriteFragment :
 
     override fun getPresenter(repository: CityListRepositoryImpl): CityListFavoritePresenter {
         val cityUseCase = CityUseCase(repository)
-        return CityListFavoritePresenter(this, CityMapper, cityUseCase)
+        return CityListFavoritePresenter(this, cityUseCase)
     }
 
     override fun getToolbar(): Toolbar {
@@ -41,7 +40,7 @@ class CityListFavoriteFragment :
     override fun getCityListView(): RecyclerView =
         binding.rvCityList
 
-    override fun updateCityList(cityList: List<CityParam>) {
+    override fun updateCityList(cityList: List<CityItem>) {
         super.updateCityList(cityList)
         binding.rvCityList.isVisible = cityList.isNotEmpty()
         binding.tvEmptyList.isVisible = cityList.isEmpty()
@@ -52,8 +51,11 @@ class CityListFavoriteFragment :
     }
 
     override fun navigateToCityDetail(cityId: Int, extras: FragmentNavigator.Extras) {
-        navController.navigate(CityListFavoriteFragmentDirections.actionCityListFavoritesFragmentToCityDetailFragment(
-            cityId),
-            extras)
+        navController.navigate(
+            CityListFavoriteFragmentDirections.actionCityListFavoritesFragmentToCityDetailFragment(
+                cityId
+            ),
+            extras
+        )
     }
 }

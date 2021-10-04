@@ -2,7 +2,7 @@ package com.evgenii.sbercities.presentation.model
 
 import androidx.annotation.DrawableRes
 
-data class CityParam(
+data class CityItem(
     val cityId: Int,
     val cityName: String,
     val countryName: String,

@@ -3,12 +3,12 @@ package com.evgenii.sbercities.presentation.mapper
 import com.evgenii.sbercities.R
 import com.evgenii.sbercities.domain.model.City
 import com.evgenii.sbercities.domain.model.CityType
-import com.evgenii.sbercities.presentation.model.CityParam
+import com.evgenii.sbercities.presentation.model.CityItem
 
-object CityMapper {
+class CityMapper {
 
-    fun mapFromEntity(item: City) =
-        CityParam(
+    fun mapFromEntity(item: City): CityItem =
+        CityItem(
             item.cityId,
             item.cityName,
             item.countryName,
@@ -21,7 +21,7 @@ object CityMapper {
             getFavoriteImg(item.isFavorite)
         )
 
-    fun mapFromListEntity(list: List<City>) =
+    fun mapFromListEntity(list: List<City>): List<CityItem> =
         list.map(this::mapFromEntity)
 
     private fun getFavoriteImg(isFavorite: Boolean) =

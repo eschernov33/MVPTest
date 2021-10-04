@@ -5,13 +5,13 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.FragmentNavigator
 import androidx.recyclerview.widget.ListAdapter
 import com.evgenii.sbercities.databinding.ItemCityBinding
-import com.evgenii.sbercities.presentation.model.CityParam
+import com.evgenii.sbercities.presentation.model.CityItem
 import com.evgenii.sbercities.presentation.viewholders.CityListViewHolder
 
 class CityListAdapter(
-    private val onCityItemClicked: (city: CityParam, extras: FragmentNavigator.Extras) -> Unit,
-    private val onCityFavoriteClicked: (city: CityParam) -> Unit,
-) : ListAdapter<CityParam, CityListViewHolder>(CityItemDiffCallback()) {
+    private val onCityItemClicked: (city: CityItem, extras: FragmentNavigator.Extras) -> Unit,
+    private val onCityFavoriteClicked: (city: CityItem) -> Unit,
+) : ListAdapter<CityItem, CityListViewHolder>(CityItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CityListViewHolder {
         val binding = ItemCityBinding.inflate(

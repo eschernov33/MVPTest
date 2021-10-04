@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -17,7 +18,7 @@ import com.evgenii.sbercities.R
 import com.evgenii.sbercities.data.repository.CityListRepositoryImpl
 import com.evgenii.sbercities.presentation.adapters.CityListAdapter
 import com.evgenii.sbercities.presentation.contracts.CityListBaseContract
-import com.evgenii.sbercities.presentation.model.CityParam
+import com.evgenii.sbercities.presentation.model.CityItem
 
 abstract class CityListBaseFragment<VB : ViewBinding, PRESENTER : CityListBaseContract.Presenter>(
     private val inflate: (LayoutInflater, ViewGroup?, Boolean) -> VB,
@@ -25,7 +26,7 @@ abstract class CityListBaseFragment<VB : ViewBinding, PRESENTER : CityListBaseCo
 
     protected lateinit var presenter: PRESENTER
 
-    protected val navController by lazy { findNavController() }
+    protected val navController: NavController by lazy { findNavController() }
 
     private val preDrawListener = {
         startPostponedEnterTransition()
@@ -63,13 +64,13 @@ abstract class CityListBaseFragment<VB : ViewBinding, PRESENTER : CityListBaseCo
         initPresenter()
     }
 
-    override fun showCityList(cityList: List<CityParam>) {
+    override fun showCityList(cityList: List<CityItem>) {
         initCityListAdapter(adapter)
         setAnimSharedTransition()
         updateCityList(cityList)
     }
 
-    override fun updateCityList(cityList: List<CityParam>) =
+    override fun updateCityList(cityList: List<CityItem>) =
         adapter.submitList(cityList)
 
     override fun onDestroyView() {
